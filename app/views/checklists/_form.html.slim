@@ -1,0 +1,21 @@
+= form_for @checklist do |f|
+  fieldset
+    .col-md-3
+      = f.label :name
+    .col-md-9
+      = f.text_field :name, :cols => "45"
+  fieldset
+    .col-md-3
+      = f.label :description
+    .col-md-9
+      = f.text_area :description, :cols => "45", :rows => "4"
+  fieldset
+    .col-md-3
+      = f.label :expires_on
+    .col-md-9
+      = f.date_field :expires_on
+  fieldset
+    .col-md-3
+    .col-md-9
+      = f.submit :submit, :class => 'btn btn-primary'
+      = link_to 'Cancel', checklists_path, :class => 'btn btn-default'

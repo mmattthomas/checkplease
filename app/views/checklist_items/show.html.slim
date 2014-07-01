@@ -1,0 +1,10 @@
+p
+  strong Check name:
+  = @checklist_item.check_name
+p
+  strong Check description:
+  = @checklist_item.check_description
+
+= link_to 'Edit', edit_checklist_item_path(@checklist_item)
+'|
+= link_to 'Back', checklist_items_path

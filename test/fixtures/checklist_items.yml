@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  check_name: 
+  check_description: MyText
+
+two:
+  check_name: 
+  check_description: MyText

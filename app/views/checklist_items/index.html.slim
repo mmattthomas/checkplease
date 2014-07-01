@@ -1,0 +1,23 @@
+h1 Listing checklist_items
+
+table
+  thead
+    tr
+      th Check name
+      th Check description
+      th
+      th
+      th
+
+  tbody
+    - @checklist_items.each do |checklist_item|
+      tr
+        td = checklist_item.check_name
+        td = checklist_item.check_description
+        td = link_to 'Show', checklist_item
+        td = link_to 'Edit', edit_checklist_item_path(checklist_item)
+        td = link_to 'Destroy', checklist_item, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Checklist item', new_checklist_item_path

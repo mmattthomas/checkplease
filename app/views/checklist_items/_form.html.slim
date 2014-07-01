@@ -1,0 +1,21 @@
+= form_for @checklist_item do |f|
+  fieldset
+    .col-md-3
+      = f.label :check_name
+    .col-md-9
+      = f.text_field :check_name
+  fieldset
+    .col-md-3
+      = f.label :check_description
+    .col-md-9
+      = f.text_area :check_description
+  fieldset
+    .col-md-3
+      = f.label :checklist
+    .col-md-9
+      = f.select :checklist_id, @all_checklists.map {|cl| [cl.name, cl.id]}, :include_blank=>true
+  fieldset
+    .col-md-3
+    .col-md-9
+      .actions = f.submit 'Save'
+
