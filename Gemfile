@@ -19,6 +19,8 @@ gem 'jquery-rails'
 # gem 'turbolinks'
 # MMT Removed because known issue w/ bootstrap
 
+gem 'jquery-ui-rails', '~> 4.2.1'
+
 # Twitter Bootstrap for that clean look
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'less-rails'

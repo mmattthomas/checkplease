@@ -15,13 +15,12 @@ class ChecklistItemsController < ApplicationController
 
   # GET /checklist_items/new
   def new
-    puts "----------"
-    puts "--PARAMS--"
-    puts params
-    puts "----------"
     @all_checklists = Checklist.all
-    @checklist = Checklist.find(params[:checklist_id])
-    @checklist_item = ChecklistItem.new
+    @checklist_item = ChecklistItem.new   # {:checklist_id => @checklist.id}
+    if params[:checklist_id]
+      @checklist = Checklist.find(params[:checklist_id])
+      @checklist_item.checklist_id = @checklist.id
+    end
   end
 
   # GET /checklist_items/1/edit
@@ -36,7 +35,8 @@ class ChecklistItemsController < ApplicationController
 
     respond_to do |format|
       if @checklist_item.save
-        format.html { redirect_to @checklist_item, notice: 'Checklist item was successfully created.' }
+        flash[:success] = 'Checklist item was successfully created!'
+        format.html { redirect_to controller: 'checklists', action: 'edit', id: @checklist_item.checklist_id }
         format.json { render :show, status: :created, location: @checklist_item }
       else
         format.html { render :new }
@@ -50,7 +50,8 @@ class ChecklistItemsController < ApplicationController
   def update
     respond_to do |format|
       if @checklist_item.update(checklist_item_params)
-        format.html { redirect_to @checklist_item, notice: 'Checklist item was successfully updated.' }
+        flash[:success] = 'Checklist item was successfully updated.'
+        format.html { redirect_to controller: 'checklists', action: 'edit', id: @checklist_item.checklist_id }
         format.json { render :show, status: :ok, location: @checklist_item }
       else
         format.html { render :edit }
@@ -62,9 +63,11 @@ class ChecklistItemsController < ApplicationController
   # DELETE /checklist_items/1
   # DELETE /checklist_items/1.json
   def destroy
+    parent_checklist_id = @checklist_item.checklist_id
     @checklist_item.destroy
+    flash[:success] = "Checklist item was successfully destroyed."
     respond_to do |format|
-      format.html { redirect_to checklist_items_url, notice: 'Checklist item was successfully destroyed.' }
+      format.html { redirect_to controller: 'checklists', action: 'edit', id: parent_checklist_id }
       format.json { head :no_content }
     end
   end

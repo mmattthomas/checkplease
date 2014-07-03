@@ -30,13 +30,22 @@ class ChecklistsController < ApplicationController
   # POST /checklists.json
   def create
     @checklist = Checklist.new(checklist_params)
-    @checklist.create_user = create_user
+
+    puts '-------------------'
+    puts '-------------------'
+    puts 'user debug         '
+    puts @checklist.create_user
+    puts '-------------------'
+    @checklist.create_user = current_user
 
     respond_to do |format|
       if @checklist.save
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully created.' }
+        flash[:success] = 'Checklist was successfully created.'
+        format.html { redirect_to checklists_url }
         format.json { render :show, status: :created, location: @checklist }
       else
+        flash[:danger] = 'Error creating checklist.  '
+        flash[:danger] += @checklist.errors.full_messages.first
         format.html { render :new }
         format.json { render json: @checklist.errors, status: :unprocessable_entity }
       end
@@ -48,9 +57,12 @@ class ChecklistsController < ApplicationController
   def update
     respond_to do |format|
       if @checklist.update(checklist_params)
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully updated.' }
+        flash[:success] = 'Checklist was successfully updated.'
+        format.html { redirect_to checklists_url }
         format.json { render :show, status: :ok, location: @checklist }
       else
+        flash[:danger] = 'Error updating checklist.  '
+        flash[:danger] += @checklist.errors.full_messages.first
         format.html { render :edit }
         format.json { render json: @checklist.errors, status: :unprocessable_entity }
       end
@@ -62,7 +74,8 @@ class ChecklistsController < ApplicationController
   def destroy
     @checklist.destroy
     respond_to do |format|
-      format.html { redirect_to checklists_url, notice: 'Checklist was successfully destroyed.' }
+      flash[:success] = 'Checklist was successfully deleted'
+      format.html { redirect_to checklists_url }
       format.json { head :no_content }
     end
   end
