@@ -55,11 +55,18 @@ class ChecklistsController < ApplicationController
   # PATCH/PUT /checklists/1
   # PATCH/PUT /checklists/1.json
   def update
+
+
+
     respond_to do |format|
       if @checklist.update(checklist_params)
         flash[:success] = 'Checklist was successfully updated.'
         format.html { redirect_to checklists_url }
         format.json { render :show, status: :ok, location: @checklist }
+        puts '---------------------'
+        puts 'CL Params ----found it-------'
+        puts checklist_params
+        puts '---------------------'
       else
         flash[:danger] = 'Error updating checklist.  '
         flash[:danger] += @checklist.errors.full_messages.first
