@@ -21,6 +21,9 @@ gem 'jquery-rails'
 
 gem 'jquery-ui-rails', '~> 4.2.1'
 
+# MMT shut up asset pipeline logging
+gem 'quiet_assets', '~> 1.0.3'
+
 # Twitter Bootstrap for that clean look
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'less-rails'
@@ -57,4 +60,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

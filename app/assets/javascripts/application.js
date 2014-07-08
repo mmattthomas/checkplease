@@ -17,5 +17,5 @@
 //= require_tree .
 
 $(function() {
-  $("#checklist_expires_on").datepicker({altField: '#hid_date', altFormat: 'yy-mm-dd'});
+  $("#checklist_expires_on").datepicker({dateFormat: 'yy-mm-dd'});
 });
