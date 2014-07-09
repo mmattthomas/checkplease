@@ -25,6 +25,7 @@ class ChecklistItemsController < ApplicationController
 
   # GET /checklist_items/1/edit
   def edit
+    puts '-####CLI EDIT####-'
     @all_checklists = Checklist.all
   end
 
@@ -48,11 +49,22 @@ class ChecklistItemsController < ApplicationController
   # PATCH/PUT /checklist_items/1
   # PATCH/PUT /checklist_items/1.json
   def update
+
+    puts '-####CLI UPDATE####-'
+    puts '-Params: '
+    puts checklist_item_params
+    puts '-item:'
+    print @checklist_item.id
+    print ' - '
+    print @checklist_item.check_name
+    puts '-##################-'
+
     respond_to do |format|
       if @checklist_item.update(checklist_item_params)
         flash[:success] = 'Checklist item was successfully updated.'
         format.html { redirect_to controller: 'checklists', action: 'edit', id: @checklist_item.checklist_id }
-        format.json { render :show, status: :ok, location: @checklist_item }
+        #format.json { render :show, status: :ok, location: @checklist_item }
+        format.json { respond_with_bip(@checklist_item) }
       else
         format.html { render :edit }
         format.json { render json: @checklist_item.errors, status: :unprocessable_entity }
@@ -77,7 +89,7 @@ class ChecklistItemsController < ApplicationController
     def set_checklist_item
       @checklist_item = ChecklistItem.find(params[:id])
     end
-    
+
     def get_parent_checklist
       if params[:checklist_id]
         @checklist = Checklist.find(params[:checklist_id])

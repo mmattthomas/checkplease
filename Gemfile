@@ -33,7 +33,12 @@ gem 'slim-rails'
 # Simpleform
 gem 'simple_form'
 
+# Authentication
 gem 'devise'
+
+# Rest In Place for in place grid editing
+#gem 'rest_in_place'
+gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 
 # To manage assets and logs with Heroku:
 group :production do
@@ -47,7 +52,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+# MMT removed because BEWD class recomended against it:
+#gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
