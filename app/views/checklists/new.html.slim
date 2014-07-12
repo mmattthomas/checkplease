@@ -2,10 +2,11 @@
 .page-header
 	h1 = "Create a new Checklist"
 	= form_for @checklist do |f|
-		= render partial: 'form', locals: {:f=>f}
-		fieldset
-			.col-md-3
-			.col-md-9
-				= f.submit :submit, :class => 'btn btn-primary'
-				= link_to 'Cancel', checklists_path, :class => 'btn btn-default'
+		== render partial: 'form', locals: {:f=>f}
+		br
+		.actions
+			= f.submit 'Create', class: "btn btn-sm btn-default"
+			| &nbsp;
+			= link_to 'Cancel', checklist_items_path, :class => 'btn btn-sm btn-default'
+
 	br

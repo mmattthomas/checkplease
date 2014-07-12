@@ -25,11 +25,12 @@ Development
 * 	[ ] Fix redirect/renders when items deleted
 * [ ] Create notifications
 * [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc.
-
+* [ ]better confirm dialogs : http://www.pjmccormick.com/nicer-rails-confirm-dialogs-and-not-just-delete-methods
 
 Questions, things...
 * [ ] Improve Datepicker UI.  Currently formats YYYY-MM-DD and doesn't fix when user formats differently
 * [ ] Form partials, how should you do it?  form_for part IN or out of partial?  What if you want all buttons on same row?
 * [ ] Simple Form problems with Devise UI
 * [ ] How to get best_in_place feature functionality for adding a new line to list
+* [ ] Related ^ look into using partials with collections (see railscasts 74)
 * [ ] Question on SLIM... viewsource has whitespace removed - any way to get whitespace/indentation added back, especially for Dev environment?

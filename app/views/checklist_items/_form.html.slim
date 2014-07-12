@@ -1,20 +1,15 @@
-= form_for @checklist_item do |f|
-  fieldset
-    .col-md-3
-      = f.label :check_name
-    .col-md-9
-      = f.text_field :check_name, size: 50
-  fieldset
-    .col-md-3
-      = f.label :check_description
-    .col-md-9
-      = f.text_area :check_description, :size => "52x10"
-  fieldset
-    .col-md-3
-      = f.label :checklist
-    .col-md-9
-      = f.select :checklist_id, @all_checklists.map {|cl| [cl.name, cl.id]}, :include_blank=>true
-  fieldset
-    .col-md-3
-    .col-md-9
-      .actions = f.submit 'Save'
+fieldset
+  .col-md-3
+    = f.label :check_name
+  .col-md-9
+    = f.text_field :check_name, size: 60
+fieldset
+  .col-md-3
+    = f.label :check_description
+  .col-md-9
+    = f.text_area :check_description, :size => "62x10"
+fieldset
+  .col-md-3
+    = f.label :checklist
+  .col-md-9
+    = f.select :checklist_id, @all_checklists.map {|cl| [cl.name, cl.id]}, :include_blank=>true

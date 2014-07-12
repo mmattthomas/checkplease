@@ -1,12 +1,13 @@
 h1 ="Editing #{@checklist_item.check_name} "
 
-== render 'form'
-
-br
-br
-br
-= link_to 'Show', @checklist_item, :class => 'btn btn-sm btn-default'
-| &nbsp;
-= link_to 'Back to List', checklist_items_path, :class => 'btn btn-sm btn-default'
-| &nbsp;
-= link_to 'Delete', checklist_item_path, :confirm => "Are you Sure?", :method => :delete, :class => 'btn btn-sm btn-danger'
+= form_for @checklist_item do |f|
+	== render(:partial=>"form", :locals => {:f => f})
+	br
+	.actions
+		= f.submit 'Save', class: "btn btn-sm btn-default"
+		| &nbsp;
+		= link_to 'Show', @checklist_item, :class => 'btn btn-sm btn-default'
+		| &nbsp;
+		= link_to 'Cancel', edit_checklist_path(@checklist_item.checklist), :class => 'btn btn-sm btn-default'
+		| &nbsp;
+		= link_to 'Delete', checklist_item_path, :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
