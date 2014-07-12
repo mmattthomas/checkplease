@@ -39,10 +39,10 @@
       //disappear flash messages after X seconds
       window.setTimeout(function() {
         $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
-          $(this).remove(); 
+          $(this).remove();
         });
         $(".alert-danger").fadeTo(500, 0).slideUp(500, function(){
-          $(this).remove(); 
+          $(this).remove();
         });
       }, 5000);
     </script>
@@ -61,17 +61,21 @@
           <ul class="nav navbar-nav">
 					<%= render 'devise/menu/registration_items' %>
 					<%= render 'devise/menu/login_items' %>
+          <% if user_signed_in? %>
+            <li><%= link_to "All Lists", "/checklists"  %></li>
+          <% end %>
           </ul>
         </div>
       </div>
     </div>
     <div class="container">
-         
+
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
+        <!--
         <div class="col-lg-3">
           <div class="well sidebar-nav">
             <h3>Sidebar</h3>
@@ -81,8 +85,9 @@
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+          </div>
+        </div>
+        -->
       </div><!--/row-->
 
       <footer>

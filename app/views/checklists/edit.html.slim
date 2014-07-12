@@ -17,8 +17,9 @@
 		tbody
 			- @checklist_items.each do |ci|
 				tr
-					td = best_in_place ci, :check_name, nil: 'enter item'
-					td = best_in_place ci, :check_description, nil: 'enter description'
-					td = link_to 'Delete', ci, data: {:confirm => 'Are you sure?'}, :method => :delete
+					td = best_in_place ci, :check_name, nil: '{{enter item}}'
+					td = best_in_place ci, :check_description, nil: '{{enter description}}'
+					/td = link_to 'Delete', ci, data: {:confirm => 'Are you sure?'}, :method => :delete
+					td = link_to 'Open', "/checklist_items/#{ci.id}/edit"
 
 	=link_to 'New Line Item', {:controller=>"checklist_items", :action=>'new', :checklist_id=>@checklist.id}, :class => 'btn btn-primary'

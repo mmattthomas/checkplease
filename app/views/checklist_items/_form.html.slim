@@ -3,12 +3,12 @@
     .col-md-3
       = f.label :check_name
     .col-md-9
-      = f.text_field :check_name
+      = f.text_field :check_name, size: 50
   fieldset
     .col-md-3
       = f.label :check_description
     .col-md-9
-      = f.text_area :check_description
+      = f.text_area :check_description, :size => "52x10"
   fieldset
     .col-md-3
       = f.label :checklist
@@ -18,4 +18,3 @@
     .col-md-3
     .col-md-9
       .actions = f.submit 'Save'
-
