@@ -10,6 +10,11 @@ fieldset
     = f.text_area :description, :cols => "62", :rows => "4"
 fieldset
   .col-md-3
-    = f.label 'Complete By'
+    = f.label :recur_on
+  .col-md-9
+    = f.select :recur_on, ['Every Day', 'Weekdays', 'Weekends', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+fieldset
+  .col-md-3
+    = f.label :expires_on
   .col-md-9
     = f.text_field :expires_on
