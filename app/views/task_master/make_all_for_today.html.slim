@@ -1,0 +1,16 @@
+h1 Admin Task : Make all tasks for current day
+
+p All tasks have been created
+
+table.table.table-striped
+	thead
+		tr
+			th Checklist
+			th Tasks Created
+	tbody
+		- @checklists.each do |cl|
+			tr
+				td = cl.name
+				td = cl.task_items.count
+
+p Thank you for using Checkplease!

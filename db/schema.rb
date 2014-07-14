@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713052443) do
+ActiveRecord::Schema.define(version: 20140714194217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140713052443) do
     t.datetime "updated_at"
     t.integer  "create_user_id"
     t.string   "recur_on"
+    t.integer  "assigned_to_id"
   end
 
   create_table "task_items", force: true do |t|
@@ -41,6 +42,16 @@ ActiveRecord::Schema.define(version: 20140713052443) do
     t.boolean  "completed"
     t.text     "notes"
     t.integer  "completed_by_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "task_id"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.integer  "checklist_id"
+    t.integer  "assigned_to_id"
+    t.date     "task_date"
+    t.string   "assigned_to_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,7 @@
 class TaskItem < ActiveRecord::Base
 
 	belongs_to :checklist
+	belongs_to :checklist_item
 
 	validates :checklist_id, presence: true
 	validates :checklist_item_id, presence: true

@@ -9,18 +9,39 @@ class TaskMasterController < ApplicationController
     today = Date::DAYNAMES[Date.today.wday]
     @checklists = Checklist.for_when today
 
+    dbg_counter = 0
+
+
     @checklists.each do |cl|
+      task = Task.new
+      task.checklist_id = cl.id
+      task.assigned_to_id = cl.assigned_to_id
+      task.task_date = Date.today
+      task.save!
+
+      dbg_taskitem_counter = 0
+      puts "Task # #{dbg_counter}"
+      puts task.checklist.name
+
       cl_items = cl.checklist_items
 
       cl_items.each do |cli|
         #TODO first check if exists already (for today)...
         task_item = TaskItem.new
+        task_item.task_id = task.id
         task_item.checklist_id = cl.id
         task_item.checklist_item_id = cli.id
         task_item.completed = false
         task_item.save!
+        puts "TaskItem # #{dbg_taskitem_counter}"
+
+        dbg_taskitem_counter += 1
+
       end
 
+      puts "--------"
+
+      dbg_counter += 1
     end
 
   end
@@ -32,14 +53,19 @@ class TaskMasterController < ApplicationController
     @checklists = Checklist.for_when today
 
     @checklists.each do |cl|
-      task_items = cl.task_items
-
-      task_items.each do |task_item|
-        task_item.destroy!
+      tasks = cl.tasks.for_today
+      tasks.each do |task|
+        task.destroy!
         @count_deleted += 1
       end
 
     end
+  end
+
+  private
+
+  def create_messages
+
   end
 
 end

@@ -19,11 +19,12 @@ class ChecklistsController < ApplicationController
   # GET /checklists/new
   def new
     @checklist = Checklist.new
+    @users = User.all
   end
 
   # GET /checklists/1/edit
   def edit
-
+    @users = User.all
   end
 
   # POST /checklists
@@ -85,6 +86,6 @@ class ChecklistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checklist_params
-      params.require(:checklist).permit(:name, :description, :expires_on, :create_user, :recur_on)
+      params.require(:checklist).permit(:name, :description, :expires_on, :create_user, :recur_on, :assigned_to_id)
     end
 end

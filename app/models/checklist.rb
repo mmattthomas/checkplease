@@ -2,6 +2,7 @@ class Checklist < ActiveRecord::Base
 
   has_many :checklist_items, :dependent => :destroy
   has_many :task_items, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy
   belongs_to :create_user, class_name: "User"
 
   validates :create_user, presence: true
