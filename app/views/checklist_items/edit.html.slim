@@ -1,4 +1,4 @@
-h1 ="Editing #{@checklist_item.check_name} "
+h1 ="Editing #{@checklist_item.check_name} for #{@checklist_item.checklist.name}"
 
 = form_for @checklist_item do |f|
 	== render(:partial=>"form", :locals => {:f => f})

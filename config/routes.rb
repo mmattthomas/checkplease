@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-  
+
 
   get 'task_master/index'
 
-  get 'task_master/make'
+  get '/run_taskmaster' => 'task_master#make_all_for_today'
+  get '/undo_taskmaster' => 'task_master#undo_all_for_today'
 
   devise_for :users
   get '/' => 'checklists#index'
-  
+
   resources :checklists
   resources :checklist_items
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

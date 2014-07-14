@@ -7,7 +7,7 @@ class Checklist < ActiveRecord::Base
   validates :create_user, presence: true
   validates :name, presence: true
 
-  scope :for_sun, lambda { where(:recur_on=>'Sunday')}
+  #scope :for_sun, lambda { where(:recur_on=>'Sunday')}
   scope :for_when, lambda {|query| where(["recur_on LIKE ?", "#{query.titlecase}"])}
   #scope :for_recur, lambda {|query| where(["recur_on LIKE ?", "%#{query}%"])}
 
