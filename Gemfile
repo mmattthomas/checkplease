@@ -45,6 +45,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :development do
+  gem 'pry-rails'
+end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

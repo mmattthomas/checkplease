@@ -10,6 +10,8 @@ table.table.table-striped
       th
         = model_class.human_attribute_name(:name)
       th
+        = model_class.human_attribute_name(:recur_on)
+      th
         = model_class.human_attribute_name(:description)
       - if @user_signed_in
         th
@@ -21,6 +23,8 @@ table.table.table-striped
           /= link_to checklist.id, checklist_path(checklist)
         td
           = checklist.name
+        td
+          = checklist.recur_on
         td
           = checklist.description
         - if @user_signed_in

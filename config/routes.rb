@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  get 'task_master/index'
+
+  get 'task_master/make'
+
   devise_for :users
   get '/' => 'checklists#index'
   
