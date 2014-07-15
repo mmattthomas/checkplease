@@ -4,7 +4,11 @@ class Task < ActiveRecord::Base
 	belongs_to :create_user, class_name: "User"
 	belongs_to :checklist
 
+	accepts_nested_attributes_for :task_items
+
 	validates :checklist, presence: true
+
+
 
 	#validates :create_user, presence: true
 

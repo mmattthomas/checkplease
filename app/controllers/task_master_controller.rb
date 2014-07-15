@@ -11,6 +11,7 @@ class TaskMasterController < ApplicationController
 
     dbg_counter = 0
 
+    @todays_tasks = []
 
     @checklists.each do |cl|
       task = Task.new
@@ -18,6 +19,8 @@ class TaskMasterController < ApplicationController
       task.assigned_to_id = cl.assigned_to_id
       task.task_date = Date.today
       task.save!
+
+      @todays_tasks << task
 
       dbg_taskitem_counter = 0
       puts "Task # #{dbg_counter}"
@@ -33,13 +36,14 @@ class TaskMasterController < ApplicationController
         task_item.checklist_item_id = cli.id
         task_item.completed = false
         task_item.save!
-        puts "TaskItem # #{dbg_taskitem_counter}"
 
+        puts "TaskItem # #{dbg_taskitem_counter}"
         dbg_taskitem_counter += 1
 
       end
 
       puts "--------"
+      create_reminder_messages @todays_tasks
 
       dbg_counter += 1
     end
@@ -64,7 +68,11 @@ class TaskMasterController < ApplicationController
 
   private
 
-  def create_messages
+  def create_reminder_messages tasks
+
+    tasks.each do |t|
+      TaskMailer.task_reminder(t, current_user).deliver
+    end
 
   end
 
