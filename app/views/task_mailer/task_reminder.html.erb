@@ -1,0 +1,13 @@
+<h1><%= @task.checklist.name %></h1>
+<br/>
+<p>Hey there!  You have some things to do!  Here is your checklist for today.</p>
+<ol>
+	<% @task.task_items.each do |item| %>
+		<li> &#9744; <%= item.checklist_item.check_name %></li>
+	<% end %>
+</ol>
+<br/>
+<p><i>Thanks for using Checkplease!  America's number one thing people use sometimes.</i></p>
+<br/>
+Link to checklist here!
+<a href="http://localhost:3000/tasks/<%=@task.id%>">Open Task</a>

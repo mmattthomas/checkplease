@@ -1,0 +1,20 @@
+.page-header
+	h1= "#{@checklist.name}"
+	p="#{@checklist.description}"
+	br
+
+	= form_for @task do |f|
+		table.table.table-striped
+			tr.info
+				th = "Task"
+				th = "Description"
+				th
+			tbody
+				- @task_items.each do |ti|
+					tr
+						td = ti.checklist_item.name
+						td = ti.checklist_item.description
+						td Checkbox Here
+		br
+		.actions
+			= f.submit 'Save', class: "btn btn-sm btn-default"
