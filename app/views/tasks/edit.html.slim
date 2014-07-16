@@ -1,2 +1,29 @@
-h1 Tasks#edit
-p Find me in app/views/tasks/edit.html.slim
+.page-header
+	h1= "#{@checklist.name}"
+	p="#{@checklist.description}"
+	br
+
+	= form_for @task do |f|
+		p I'm exposing this date field just to get one field on the form that isn't part of the secondary task_item object.  But in reality this field should be hidden.
+		=f.date_select :task_date
+		br
+		table.table.table-striped
+			tr.info
+				th Task
+				th Description
+				th Complete
+			tbody
+				- @task_items.each do |task_item|
+					tr
+						td = task_item.checklist_item.check_name
+						td = task_item.checklist_item.check_description
+						td
+							/!input id="task[task_item][completed]" name="task[task_item][completed]" type="checkbox"
+							p SOME TEXT
+							- f.fields_for "task[task_item_attribute][]", task_item do |task_item_form|
+								p BUT NOTHING IN HERE
+								=task_item_form.check_box :completed
+								/! this is not working... fields_for block is not giving anything!
+		br
+		.actions
+			= f.submit 'Save', class: "btn btn-sm btn-default"

@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         flash[:success] = 'Tasklist was successfully updated.'
-        format.html { redirect_to checklists_url }
+        format.html { render :show }
         format.json { render :show, status: :ok, location: @task }
       else
         flash[:danger] = 'Error updating tasklist.  '
