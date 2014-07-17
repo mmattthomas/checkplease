@@ -7,7 +7,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method :smtp, {
     :address => ENV['smtp.postmarkapp.com'],
     :port => '25',
-    :domain => 'www.checkplease.cc',
+    :domain => 'checkpls.herokuapp.com',
     :user_name => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'],
     :password => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'],
     :authentication => :plain,
