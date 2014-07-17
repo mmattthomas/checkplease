@@ -1,5 +1,5 @@
 class TaskMailer < ActionMailer::Base
-  default from: "checkplease@example.com"
+  default from: "admin@checkplease.cc"
 
   def task_reminder task, user
     @user = user

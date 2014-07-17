@@ -3,16 +3,19 @@ Rails.application.configure do
 
   # For devise - setting action mailer URL
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      :address              => 'smtp.gmail.com',
-      :port                 => 587,
-      :domain               => 'gmail.com',
-      :user_name            => 'mmattthomas@gmail.com',
-      :password             => '@cetate1',
-      :authentication       => 'plain',
-      :enable_starttls_auto => true
-  }
+  config.action_mailer.delivery_method   = :postmark
+  config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
+
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     :address              => 'smtp.gmail.com',
+  #     :port                 => 587,
+  #     :domain               => 'gmail.com',
+  #     :user_name            => 'mmattthomas@gmail.com',
+  #     :password             => '@cetate1',
+  #     :authentication       => 'plain',
+  #     :enable_starttls_auto => true
+  # }
   config.action_mailer.raise_delivery_errors = true
 
   # In the development environment your application's code is reloaded on

@@ -36,6 +36,9 @@ gem 'simple_form'
 # Authentication
 gem 'devise'
 
+# SMTP/Mail
+gem 'postmark-rails', '~> 0.8.0'
+
 # Rest In Place for in place grid editing
 #gem 'rest_in_place'
 gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
@@ -43,7 +46,6 @@ gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 # To manage assets and logs with Heroku:
 group :production do
   gem 'rails_12factor'
-  gem 'postmark-rails'
 end
 
 group :development do

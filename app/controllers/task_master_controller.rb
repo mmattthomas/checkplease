@@ -8,9 +8,9 @@ class TaskMasterController < ApplicationController
     if current_user.email != "citytank@gmail.com"
       return
     end
+
     # this will create all tasks for current day
-    today = Date::DAYNAMES[Date.today.wday]
-    @checklists = Checklist.for_when today
+    @checklists = get_checklists_for_day
 
     dbg_counter = 0
 
@@ -70,6 +70,26 @@ class TaskMasterController < ApplicationController
   end
 
   private
+
+  def get_checklists_for_day
+    today = Date::DAYNAMES[Date.today.wday]
+    case today
+      when "Monday"
+        Checklist.for_monday
+      when "Tuesday"
+        Checklist.for_tuesday
+      when "Wednesday"
+        Checklist.for_wednesday
+      when "Thursday"
+        Checklist.for_thursday
+      when "Friday"
+        Checklist.for_friday
+      when "Saturday"
+        Checklist.for_saturday
+      else
+        Checklist.for_sunday
+    end
+  end
 
   def create_reminder_messages tasks
 

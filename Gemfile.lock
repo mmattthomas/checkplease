@@ -195,7 +195,7 @@ DEPENDENCIES
   jquery-ui-rails (~> 4.2.1)
   less-rails
   pg
-  postmark-rails
+  postmark-rails (~> 0.8.0)
   pry-rails
   quiet_assets (~> 1.0.3)
   rails (= 4.1.1)
