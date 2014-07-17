@@ -20,7 +20,7 @@
 						td
 							/!input id="task[task_item][completed]" name="task[task_item][completed]" type="checkbox"
 							p SOME TEXT
-							- f.fields_for "task[task_item_attribute][]", task_item do |task_item_form|
+							- fields_for "task[task_item_attribute][]", task_item do |task_item_form|
 								p BUT NOTHING IN HERE
 								=task_item_form.check_box :completed
 								/! this is not working... fields_for block is not giving anything!

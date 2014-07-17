@@ -6,13 +6,13 @@
 		tr.info
 			th Task
 			th Description
-			th Complete
+			th align="center" Complete
 			th Completion Notes
 		tbody
 			- @task_items.each do |task_item|
 				tr
 					td = task_item.checklist_item.check_name
 					td = task_item.checklist_item.check_description
-					td = best_in_place task_item, :completed, type: :checkbox
+					td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: ["[ ]", "[X]"]
 					td = best_in_place task_item, :notes
 	br
