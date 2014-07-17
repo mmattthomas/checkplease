@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :task_items
+
   resources :tasks
   get 'tasks/:id'         => "tasks#edit"
 

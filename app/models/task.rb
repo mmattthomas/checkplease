@@ -4,12 +4,11 @@ class Task < ActiveRecord::Base
 	belongs_to :create_user, class_name: "User"
 	belongs_to :checklist
 
-	accepts_nested_attributes_for :task_items
+	#accepts_nested_attributes_for :task_items
+	#per dickeyxxx, this is buggy and not great.
 
 	validates :checklist, presence: true
-
-
-
+	
 	#validates :create_user, presence: true
 
 	#scope :for_sun, lambda { where(:recur_on=>'Sunday')}
