@@ -4,8 +4,16 @@ Rails.application.configure do
   # For devise - setting action mailer URL
 
   config.action_mailer.default_url_options = { :host => 'www.checkplease.cc' }
-  config.action_mailer.delivery_method   = :postmark
-  config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
+  config.action_mailer.delivery_method :smtp, {
+    :address => ENV['smtp.postmarkapp.com'],
+    :port => '25',
+    :domain => 'www.checkplease.cc',
+    :user_name => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'],
+    :password => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+  #config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
