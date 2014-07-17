@@ -26,9 +26,12 @@ Development
 * [X] Create notifications
 * [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc.
 * [X] better confirm dialogs : http://www.pjmccormick.com/nicer-rails-confirm-dialogs-and-not-just-delete-methods
-* [ ] Better splash page before login (don't show the list)
-* [ ] Filter to just MY checklists after login
-* [ ] Tasklist instance, actions to take when chckboxes are checked
+* [X] Better splash page before login (don't show the list)
+* [X] Filter to just MY checklists after login
+* [ ] Add inline form for creating checklist items on the edit-checklist form
+* [ ] Add a "Name" for each user
+* [ ] A way for users who aren't yet signed up to sign up when they get an email w/ task link (also validation here)
+* [ ] Tasklist instance, actions to take when checkboxes are checked some positive signal
 
 Questions, things...
 * [ ] Improve Datepicker UI.  Currently formats YYYY-MM-DD and doesn't fix when user formats differently

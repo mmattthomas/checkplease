@@ -30,7 +30,8 @@
           - if user_signed_in?
             td
   					=link_to t('.edit', :default => t("helpers.links.edit")), edit_checklist_path(checklist), :class => 'btn btn-default'
-
+  - if user_signed_in? && @checklists.length == 0
+    p You have no checklists!  Click New button below to start creating one!
   - if user_signed_in?
   	=link_to t('.new', :default => t("helpers.links.new")), new_checklist_path, :class => 'btn btn-primary'
 - else

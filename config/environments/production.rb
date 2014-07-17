@@ -2,18 +2,10 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # For devise - setting action mailer URL
-  config.action_mailer.default_url_options = { :host => 'www.checkplease.cc' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-     :address              => 'smtp.gmail.com',
-     :port                 => 587,
-     :domain               => 'gmail.com',
-     :user_name            => 'mmattthomas@gmail.com',
-     :password             => '@cetate1',
-     :authentication       => 'plain',
-     :enable_starttls_auto => true
-  }
 
+  config.action_mailer.default_url_options = { :host => 'www.checkplease.cc' }
+  config.action_mailer.delivery_method   = :postmark
+  config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
   # Code is not reloaded between requests.
   config.cache_classes = true
 

@@ -10,7 +10,7 @@ class ChecklistsController < ApplicationController
       @checklists = Checklist.for_user_id(current_user.id)
     else
       @checklists = Checklist.all
-    end    
+    end
     @current_user = current_user
     @user_signed_in = user_signed_in?
   end
@@ -40,7 +40,7 @@ class ChecklistsController < ApplicationController
 
     respond_to do |format|
       if @checklist.save
-        flash[:success] = 'Checklist was successfully created.'
+        flash[:success] = 'Your checklist was successfully created!  The list will be emailed to the assignee on the designated days.'
         format.html { redirect_to checklists_url }
         format.json { render :show, status: :created, location: @checklist }
       else

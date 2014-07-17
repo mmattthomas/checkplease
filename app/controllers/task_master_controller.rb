@@ -5,6 +5,9 @@ class TaskMasterController < ApplicationController
 
   def make_all_for_today
 
+    if current_user.email != "citytank@gmail.com"
+      return
+    end
     # this will create all tasks for current day
     today = Date::DAYNAMES[Date.today.wday]
     @checklists = Checklist.for_when today

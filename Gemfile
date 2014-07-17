@@ -43,6 +43,7 @@ gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 # To manage assets and logs with Heroku:
 group :production do
   gem 'rails_12factor'
+  gem 'postmark-rails'
 end
 
 group :development do
