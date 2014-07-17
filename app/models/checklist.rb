@@ -10,6 +10,7 @@ class Checklist < ActiveRecord::Base
 
   #scope :for_sun, lambda { where(:recur_on=>'Sunday')}
   scope :for_when, lambda {|query| where(["recur_on LIKE ?", "#{query.titlecase}"])}
+  scope :for_user_id, lambda {|query| where(["create_user_id = ?", "#{query.to_i}"])}
   #scope :for_recur, lambda {|query| where(["recur_on LIKE ?", "%#{query}%"])}
 
 end

@@ -1,35 +1,39 @@
 - model_class = Checklist
-.page-header
-  h1
-    =t('.title', :default => model_class.model_name.human.pluralize.titleize)
-table.table.table-striped
-  thead
-    tr
-      /th
-        /= model_class.human_attribute_name(:id)
-      th
-        = model_class.human_attribute_name(:name)
-      th
-        = model_class.human_attribute_name(:recur_on)
-      th
-        = model_class.human_attribute_name(:description)
-      - if @user_signed_in
-        th
-          /=t '.actions', :default => t("helpers.actions")
-  tbody
-    - @checklists.each do |checklist|
+- if user_signed_in?
+  .page-header
+    h1 My Checklists
+  table.table.table-striped
+    thead
       tr
-        /td
-          /= link_to checklist.id, checklist_path(checklist)
-        td
-          = checklist.name
-        td
-          = checklist.recur_on
-        td
-          = checklist.description
-        - if @user_signed_in
+        /th
+          /= model_class.human_attribute_name(:id)
+        th
+          = model_class.human_attribute_name(:name)
+        th
+          = model_class.human_attribute_name(:recur_on)
+        th
+          = model_class.human_attribute_name(:description)
+        - if user_signed_in?
+          th
+            /=t '.actions', :default => t("helpers.actions")
+    tbody
+      - @checklists.each do |checklist|
+        tr
+          /td
+            /= link_to checklist.id, checklist_path(checklist)
           td
-					=link_to t('.edit', :default => t("helpers.links.edit")), edit_checklist_path(checklist), :class => 'btn btn-default'
+            = checklist.name
+          td
+            = checklist.recur_on
+          td
+            = checklist.description
+          - if user_signed_in?
+            td
+  					=link_to t('.edit', :default => t("helpers.links.edit")), edit_checklist_path(checklist), :class => 'btn btn-default'
 
-- if @user_signed_in
-	=link_to t('.new', :default => t("helpers.links.new")), new_checklist_path, :class => 'btn btn-primary'
+  - if user_signed_in?
+  	=link_to t('.new', :default => t("helpers.links.new")), new_checklist_path, :class => 'btn btn-primary'
+- else
+  .jumbotron
+    h1 <i class="fa fa-check-square-o fa-lg"></i> Checkplease!
+    h4 America's number one trusted place to make a list.

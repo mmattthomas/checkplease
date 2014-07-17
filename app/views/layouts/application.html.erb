@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Checkplease" %></title>
     <%= csrf_meta_tags %>
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
@@ -44,7 +44,7 @@
         $(".alert-danger").fadeTo(500, 0).slideUp(500, function(){
           $(this).remove();
         });
-      }, 1500);
+      }, 2200);
     </script>
   </head>
   <body>
@@ -56,14 +56,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Checkplease</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-check-square-o fa-lg"></i>  Checkplease</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav nav-pills pull-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "My Checklists", "/checklists"  %></li>
+          <% end %>
 					<%= render 'devise/menu/registration_items' %>
 					<%= render 'devise/menu/login_items' %>
-          <% if user_signed_in? %>
-            <li><%= link_to "All Lists", "/checklists"  %></li>
-          <% end %>
           </ul>
         </div>
       </div>
@@ -92,7 +92,7 @@
 
       <footer>
 				<br/><br/>
-        <p>&copy; Matt Thomas 2014</p>
+        <!-- <p>&copy; Matt Thomas 2014</p>-->
       </footer>
 
     </div> <!-- /container -->

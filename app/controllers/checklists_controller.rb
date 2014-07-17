@@ -6,7 +6,11 @@ class ChecklistsController < ApplicationController
   # GET /checklists
   # GET /checklists.json
   def index
-    @checklists = Checklist.all
+    if user_signed_in?
+      @checklists = Checklist.for_user_id(current_user.id)
+    else
+      @checklists = Checklist.all
+    end    
     @current_user = current_user
     @user_signed_in = user_signed_in?
   end

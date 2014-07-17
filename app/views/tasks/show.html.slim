@@ -13,6 +13,6 @@
 				tr
 					td = task_item.checklist_item.check_name
 					td = task_item.checklist_item.check_description
-					td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: ["[ ]", "[X]"]
+					td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")]
 					td = best_in_place task_item, :notes
 	br
