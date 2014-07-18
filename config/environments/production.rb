@@ -9,9 +9,9 @@ Rails.application.configure do
       :address        => 'smtp.sendgrid.net',
       :port           => '587',
       :authentication => :plain,
-      :user_name      => ENV['admin@checkplease.cc'],
-      :password       => ENV['TreeFr0g9'],
-      :domain         => 'heroku.com',
+      :user_name      => 'admin@checkplease.cc',
+      :password       => 'TreeFr0g9',
+      :domain         => 'checkpls.cc',
       :enable_starttls_auto => true
   }
   #config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
