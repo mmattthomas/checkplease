@@ -1,5 +1,5 @@
 class TaskMailer < ActionMailer::Base
-  default from: "admin@checkplease.cc"
+  default from: "app27497064@heroku.com"
 
   def task_reminder task, user
     @user = user
