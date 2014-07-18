@@ -3,14 +3,14 @@ Rails.application.configure do
 
   # For devise - setting action mailer URL
 
-  config.action_mailer.default_url_options = { :host => 'checkpls.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.checkplease.cc' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address        => 'smtp.sendgrid.net',
       :port           => '587',
       :authentication => :plain,
-      :user_name      => ENV['app27497064@heroku.com'],
-      :password       => ENV['q6qyxltj'],
+      :user_name      => ENV['admin@checkplease.cc'],
+      :password       => ENV['TreeFr0g9'],
       :domain         => 'heroku.com',
       :enable_starttls_auto => true
   }
