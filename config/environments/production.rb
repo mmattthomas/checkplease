@@ -4,14 +4,15 @@ Rails.application.configure do
   # For devise - setting action mailer URL
 
   config.action_mailer.default_url_options = { :host => 'checkpls.herokuapp.com' }
-  config.action_mailer.delivery_method :smtp, {
-    :address => ENV['smtp.postmarkapp.com'],
-    :port => '25',
-    :domain => 'checkpls.herokuapp.com',
-    :user_name => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'],
-    :password => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'],
-    :authentication => :plain,
-    :enable_starttls_auto => true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['app27497064@heroku.com'],
+      :password       => ENV['q6qyxltj'],
+      :domain         => 'heroku.com',
+      :enable_starttls_auto => true
   }
   #config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
   # Code is not reloaded between requests.

@@ -39,7 +39,8 @@ gem 'simple_form'
 gem 'devise'
 
 # SMTP/Mail
-gem 'postmark-rails', '~> 0.8.0'
+gem 'mail'
+# gem 'postmark-rails', '~> 0.8.0'
 
 # Rest In Place for in place grid editing
 #gem 'rest_in_place'
