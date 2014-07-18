@@ -3,7 +3,7 @@ Rails.application.configure do
 
   # For devise - setting action mailer URL
 
-  config.action_mailer.default_url_options = { :host => 'www.checkplease.cc' }
+  config.action_mailer.default_url_options = { :host => 'checkpls.herokuapp.com' }
   config.action_mailer.delivery_method :smtp, {
     :address => ENV['smtp.postmarkapp.com'],
     :port => '25',
