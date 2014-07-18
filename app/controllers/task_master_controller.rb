@@ -45,8 +45,7 @@ class TaskMasterController < ApplicationController
 
       end
 
-      #puts "--------"
-      #create_reminder_messages @todays_tasks
+      create_reminder_messages @todays_tasks
 
       #dbg_counter += 1
     end
