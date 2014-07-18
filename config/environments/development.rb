@@ -3,26 +3,26 @@ Rails.application.configure do
 
   # For devise - setting action mailer URL
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #     :address        => 'smtp.sendgrid.net',
-  #     :port           => '587',
-  #     :authentication => :plain,
-  #     :user_name      => ENV['admin@checkplease.cc'],
-  #     :password       => ENV['TreeFr0g9'],
-  #     :domain         => 'heroku.com',
-  #     :enable_starttls_auto => true
-  # }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :address              => 'smtp.gmail.com',
-      :port                 => 587,
-      :domain               => 'gmail.com',
-      :user_name            => 'mmattthomas@gmail.com',
-      :password             => '@cetate1',
-      :authentication       => 'plain',
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => 'app27497064@heroku.com',
+      :password       => 'TreeFr0g9',
+      :domain         => 'heroku.com',
       :enable_starttls_auto => true
   }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     :address              => 'smtp.gmail.com',
+  #     :port                 => 587,
+  #     :domain               => 'gmail.com',
+  #     :user_name            => 'mmattthomas@gmail.com',
+  #     :password             => '@cetate1',
+  #     :authentication       => 'plain',
+  #     :enable_starttls_auto => true
+  # }
   config.action_mailer.raise_delivery_errors = true
 
   # In the development environment your application's code is reloaded on
