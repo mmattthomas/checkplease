@@ -25,9 +25,9 @@ class TaskMasterController < ApplicationController
 
       @todays_tasks << task
 
-      dbg_taskitem_counter = 0
-      puts "Task # #{dbg_counter}"
-      puts task.checklist.name
+      #dbg_taskitem_counter = 0
+      #puts "Task # #{dbg_counter}"
+      #puts task.checklist.name
 
       cl_items = cl.checklist_items
 
@@ -40,15 +40,15 @@ class TaskMasterController < ApplicationController
         task_item.completed = false
         task_item.save!
 
-        puts "TaskItem # #{dbg_taskitem_counter}"
-        dbg_taskitem_counter += 1
+        #puts "TaskItem # #{dbg_taskitem_counter}"
+        #dbg_taskitem_counter += 1
 
       end
 
-      puts "--------"
-      create_reminder_messages @todays_tasks
+      #puts "--------"
+      #create_reminder_messages @todays_tasks
 
-      dbg_counter += 1
+      #dbg_counter += 1
     end
 
   end
@@ -94,6 +94,7 @@ class TaskMasterController < ApplicationController
   def create_reminder_messages tasks
 
     tasks.each do |t|
+      #TODO - this should be ASSIGNED TO not current user!
       TaskMailer.task_reminder(t, current_user).deliver
     end
 
