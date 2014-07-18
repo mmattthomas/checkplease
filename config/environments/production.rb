@@ -11,7 +11,7 @@ Rails.application.configure do
       :authentication => :plain,
       :user_name      => 'admin@checkplease.cc',
       :password       => 'TreeFr0g9',
-      :domain         => 'checkpls.cc',
+      :domain         => 'checkplease.cc',
       :enable_starttls_auto => true
   }
   #config.action_mailer.postmark_settings = { :api_key => ENV['780ae696-b9cb-49b0-a160-32ca40b6b0f9'] }
