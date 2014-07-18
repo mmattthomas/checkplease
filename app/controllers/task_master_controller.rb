@@ -3,100 +3,123 @@ class TaskMasterController < ApplicationController
   def index
   end
 
+  # create all tasks for current day, and send notifications (unless already created)
   def make_all_for_today
+    batch_task_build false
+  end
 
-    if current_user.email != "citytank@gmail.com"
-      return
-    end
+  # create all tasks for current day, and send notifications
+  def remake_all_for_today
+    batch_task_build true
+    render 'make_all_for_today'
+  end
 
-    # this will create all tasks for current day
-    @checklists = get_checklists_for_day
+  # delete all tasks created today (undo measure)
+  def undo_all_for_today
+    batch_task_remove
+    @myvar = "hello cruel world!  Today is #{Date.today}"
+  end
 
-    dbg_counter = 0
+  private
 
-    @todays_tasks = []
+    def batch_task_build resend
 
-    @checklists.each do |cl|
-      task = Task.new
-      task.checklist_id = cl.id
-      task.assigned_to_id = cl.assigned_to_id
-      task.task_date = Date.today
-      task.save!
+      @tasks_created = 0
 
-      @todays_tasks << task
+      if current_user.email != "citytank@gmail.com"
+        return
+      end
 
-      #dbg_taskitem_counter = 0
-      #puts "Task # #{dbg_counter}"
-      #puts task.checklist.name
+      # this will create all tasks for current day
+      @checklists = get_checklists_for_today
 
-      cl_items = cl.checklist_items
+      dbg_counter = 0
 
-      cl_items.each do |cli|
-        #TODO first check if exists already (for today)...
-        task_item = TaskItem.new
-        task_item.task_id = task.id
-        task_item.checklist_id = cl.id
-        task_item.checklist_item_id = cli.id
-        task_item.completed = false
-        task_item.save!
+      @todays_tasks = []
 
-        #puts "TaskItem # #{dbg_taskitem_counter}"
-        #dbg_taskitem_counter += 1
+      @checklists.each do |cl|
+        if cl.tasks.length == 0
+          task = Task.new
+          task.checklist_id = cl.id
+          task.assigned_to_id = cl.assigned_to_id
+          task.task_date = Date.today
+          task.save!
+
+          @todays_tasks << task
+
+          #dbg_taskitem_counter = 0
+          #puts "Task # #{dbg_counter}"
+          #puts task.checklist.name
+
+          cl_items = cl.checklist_items
+
+          cl_items.each do |cli|
+            #TODO first check if exists already (for today)...
+            task_item = TaskItem.new
+            task_item.task_id = task.id
+            task_item.checklist_id = cl.id
+            task_item.checklist_item_id = cli.id
+            task_item.completed = false
+            task_item.save!
+
+            #puts "TaskItem # #{dbg_taskitem_counter}"
+            #dbg_taskitem_counter += 1
+          end
+        else
+            puts "------------------------------------"
+            puts "#{cl.name} already has tasks created"
+            puts "------------------------------------"
+        end #end if
 
       end
 
       create_reminder_messages @todays_tasks
 
-      #dbg_counter += 1
     end
 
-  end
+    #delete task_items created today
+    def batch_task_remove
+      @count_deleted = 0
+      today = Date::DAYNAMES[Date.today.wday]
+      @checklists = Checklist.for_when today
 
-  #delete task_items created today
-  def undo_all_for_today
-    @count_deleted = 0
-    today = Date::DAYNAMES[Date.today.wday]
-    @checklists = Checklist.for_when today
+      @checklists.each do |cl|
+        tasks = cl.tasks.for_today
+        tasks.each do |task|
+          task.destroy!
+          @count_deleted += 1
+        end
 
-    @checklists.each do |cl|
-      tasks = cl.tasks.for_today
-      tasks.each do |task|
-        task.destroy!
-        @count_deleted += 1
+      end
+    end
+
+    def get_checklists_for_today
+      today = Date::DAYNAMES[Date.today.wday]
+      case today
+        when "Monday"
+          Checklist.for_monday
+        when "Tuesday"
+          Checklist.for_tuesday
+        when "Wednesday"
+          Checklist.for_wednesday
+        when "Thursday"
+          Checklist.for_thursday
+        when "Friday"
+          Checklist.for_friday
+        when "Saturday"
+          Checklist.for_saturday
+        else
+          Checklist.for_sunday
+      end
+    end
+
+    def create_reminder_messages tasks
+
+      tasks.each do |t|
+        #TODO - this should be ASSIGNED TO not current user!
+        TaskMailer.task_reminder(t, current_user).deliver
       end
 
     end
-  end
-
-  private
-
-  def get_checklists_for_day
-    today = Date::DAYNAMES[Date.today.wday]
-    case today
-      when "Monday"
-        Checklist.for_monday
-      when "Tuesday"
-        Checklist.for_tuesday
-      when "Wednesday"
-        Checklist.for_wednesday
-      when "Thursday"
-        Checklist.for_thursday
-      when "Friday"
-        Checklist.for_friday
-      when "Saturday"
-        Checklist.for_saturday
-      else
-        Checklist.for_sunday
-    end
-  end
-
-  def create_reminder_messages tasks
-
-    tasks.each do |t|
-      #TODO - this should be ASSIGNED TO not current user!
-      TaskMailer.task_reminder(t, current_user).deliver
-    end
-
-  end
 
 end

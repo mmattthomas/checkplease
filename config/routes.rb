@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'task_master/index'
 
   get '/run_taskmaster' => 'task_master#make_all_for_today'
+  get '/rerun_taskmaster' => 'task_master#remake_all_for_today'
   get '/undo_taskmaster' => 'task_master#undo_all_for_today'
 
   devise_for :users
