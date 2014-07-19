@@ -37,6 +37,7 @@ gem 'simple_form'
 
 # Authentication
 gem 'devise'
+gem 'cancancan', '~> 1.8'
 
 # SMTP/Mail
 gem 'mail'

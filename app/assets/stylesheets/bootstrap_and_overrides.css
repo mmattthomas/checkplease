@@ -57,6 +57,10 @@ label.collection_radio_buttons {
   font-style: italic;
 }
 
+input {
+  margin-bottom: 15px;
+}
+
 input.radio {
   margin-right: 5px;
   vertical-align: -3px;

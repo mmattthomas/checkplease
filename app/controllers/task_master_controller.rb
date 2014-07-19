@@ -5,11 +5,13 @@ class TaskMasterController < ApplicationController
 
   # create all tasks for current day, and send notifications (unless already created)
   def make_all_for_today
+    @message = "All tasks created for today."
     batch_task_build false
   end
 
   # create all tasks for current day, and send notifications
   def remake_all_for_today
+    @message = "All tasks created for today."
     batch_task_build true
     render 'make_all_for_today'
   end
@@ -23,29 +25,31 @@ class TaskMasterController < ApplicationController
   private
 
     def batch_task_build resend
-
+      @updatecount = 0
       @tasks_created = 0
 
       if current_user.email != "citytank@gmail.com"
+        @message = "Must be admin user to perform this task"
         return
       end
 
       # this will create all tasks for current day
       @checklists = get_checklists_for_today
 
+      puts "***>>>  count of checklists is #{@checklists.length}"
+
       dbg_counter = 0
 
       @todays_tasks = []
 
       @checklists.each do |cl|
-        if cl.tasks.length == 0
+        @updatecount = @updatecount + 1
+        if cl.tasks.for_today.length == 0
           task = Task.new
           task.checklist_id = cl.id
           task.assigned_to_id = cl.assigned_to_id
           task.task_date = Date.today
           task.save!
-
-          @todays_tasks << task
 
           #dbg_taskitem_counter = 0
           #puts "Task # #{dbg_counter}"
@@ -70,6 +74,9 @@ class TaskMasterController < ApplicationController
             puts "#{cl.name} already has tasks created"
             puts "------------------------------------"
         end #end if
+
+        @todays_tasks << task
+        @tasks_created = @tasks_created + 1
 
       end
 
