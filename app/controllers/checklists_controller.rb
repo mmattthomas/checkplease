@@ -24,6 +24,7 @@ class ChecklistsController < ApplicationController
   def new
     @checklist = Checklist.new
     @users = User.all
+    @checklist.assigned_to_id = current_user.id   #might need IDs
   end
 
   # GET /checklists/1/edit

@@ -69,14 +69,16 @@ class TaskMasterController < ApplicationController
             #puts "TaskItem # #{dbg_taskitem_counter}"
             #dbg_taskitem_counter += 1
           end
+
+          @todays_tasks << task
+          @tasks_created = @tasks_created + 1
+
         else
             puts "------------------------------------"
             puts "#{cl.name} already has tasks created"
             puts "------------------------------------"
         end #end if
 
-        @todays_tasks << task
-        @tasks_created = @tasks_created + 1
 
       end
 
@@ -124,7 +126,7 @@ class TaskMasterController < ApplicationController
 
       tasks.each do |t|
         #TODO - this should be ASSIGNED TO not current user!
-        TaskMailer.task_reminder(t, current_user).deliver
+        TaskMailer.task_reminder(t).deliver
       end
 
     end
