@@ -75,7 +75,7 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <% if !user_signed_in? && request.fullpath != '/users/sign_up' %>
+        <% if !user_signed_in? && request.fullpath != '/users/sign_up' && request.fullpath != '/users' %>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
             <%= render 'devise/sessions/new' %>
