@@ -14,16 +14,17 @@ Development
 * [X] UI cleanup
 * 	[X] Fix redirect/renders when items deleted
 * [X] Create notifications
+* [X] Fix Delete button on modal forms... at the moment, I've reverted to javscript prompts :(
 * [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc. Investigate "dashing" gem
 * [ ] Notificaiton to create user with completion statistics
 * [X] better confirm dialogs : http://www.pjmccormick.com/nicer-rails-confirm-dialogs-and-not-just-delete-methods
 * [X] Better splash page before login (don't show the list)
 * [X] Filter to just MY checklists after login
-* [ ] Add inline form for creating checklist items on the edit-checklist form
-* [ ] Redirect to EDIT of checklist after "New" checklist is created
-* [ ] Flash message (maybe permanent) after creating NEW checklist that gives instructions on what to do next
-* [ ] Hide checklist_id field on checklist items form (this form should be going away anyways)
-* [ ] Remove best_in_place for checklist form (items grid)
+* [X] Add inline form for creating checklist items on the edit-checklist form
+* [X] Redirect to EDIT of checklist after "New" checklist is created
+* [X] Flash message (maybe permanent) after creating NEW checklist that gives instructions on what to do next
+* [X] Hide checklist_id field on checklist items form (this form should be going away anyways)
+* [X] replace "Open" link with "Delete" link for checklist items
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
 * [ ] Gut/Improve simple forms used for registration
 * [ ] Add cancancan gem
@@ -35,3 +36,4 @@ Development
 *   [ ] Hour, or Time of day when reminder should be sent
 * [ ] A way for users who aren't yet signed up to sign up when they get an email w/ task link (also validation here)
 * [ ] Tasklist instance, some callback positive re-inforcement when items are checked.  And actions to take when checkboxes are checked some positive way
+* [ ] Anonymous feature : option on checklist, or deduce based on if email is in user table, generate and send obfuscated task id URLs.  More security, etc.

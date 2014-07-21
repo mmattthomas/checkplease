@@ -30,6 +30,7 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1/edit
   def edit
     @users = User.all
+    @new_checklist_item = ChecklistItem.new(:checklist_id => @checklist.id)
   end
 
   # POST /checklists
@@ -41,8 +42,8 @@ class ChecklistsController < ApplicationController
 
     respond_to do |format|
       if @checklist.save
-        flash[:success] = 'Your checklist was successfully created!  The list will be emailed to the assignee on the designated days.'
-        format.html { redirect_to checklists_url }
+        flash[:success] = 'Your checklist was successfully created!  Now add items to it!'
+        format.html { redirect_to edit_checklist_path(@checklist.id) }
         format.json { render :show, status: :created, location: @checklist }
       else
         flash[:danger] = 'Error creating checklist.  '

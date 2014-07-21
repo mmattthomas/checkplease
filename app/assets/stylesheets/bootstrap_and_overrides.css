@@ -8,6 +8,11 @@
 
 /* ----- Override form styles ----- */
 
+div.light_text {
+  float: left;
+  font-style: italic;
+  color: #999999;
+}
 
 /* ----- SimpleForm Styles ----- */
 
@@ -60,6 +65,16 @@ label.collection_radio_buttons {
 input {
   margin-bottom: 15px;
 }
+
+select {
+  margin-bottom: 15px;
+}
+
+textarea {
+  margin-bottom: 15px;
+}
+
+
 
 input.radio {
   margin-right: 5px;
