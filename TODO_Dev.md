@@ -12,7 +12,7 @@ Development
 * [X] Add best_in_place for in place editing of line items
 * [X] Add checklist instance items
 * [X] UI cleanup
-* 	[X] Fix redirect/renders when items deleted
+	* [X] Fix redirect/renders when items deleted
 * [X] Create notifications
 * [X] Fix Delete button on modal forms... at the moment, I've reverted to javscript prompts :(
 * [X] better confirm dialogs : http://www.pjmccormick.com/nicer-rails-confirm-dialogs-and-not-just-delete-methods
@@ -28,7 +28,7 @@ Development
 * [ ] Notificaiton to create user with completion statistics
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
 * [ ] Gut/Improve simple forms used for registration
-	* [ ] login
+	* [X] login
 	* [ ] register
 	* [ ] forgot password
 	* [ ] profile
