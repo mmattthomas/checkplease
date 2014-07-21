@@ -24,8 +24,13 @@
       = f.label :expires_on
     .col-md-6
       = f.date_field :expires_on
-    .col-md-3
-      .actions
+  fieldset
+    .actions
+      - if @checklist.id.nil?
+        = f.submit 'Create!', class: "btn btn-sm btn-default"
+        | &nbsp;
+        = link_to 'Cancel', checklists_path, :class => 'btn btn-sm btn-danger'
+      - else
         = f.submit 'Update', class: "btn btn-sm btn-default"
         | &nbsp;
         = link_to 'Delete List!', checklist_path, :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'

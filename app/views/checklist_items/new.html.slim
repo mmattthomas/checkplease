@@ -2,8 +2,8 @@ h1 = "New Item for #{@checklist_item.checklist.name}"
 
 = form_for @checklist_item do |f|
 	== render(:partial=>"form", :locals => {:f => f})
-	br
-	.actions
-		= f.submit 'Create', class: "btn btn-sm btn-default"
-		| &nbsp;
-		= link_to 'Cancel', checklist_items_path, :class => 'btn btn-sm btn-default'
+		br
+		.actions
+			= f.submit 'Create', class: "btn btn-sm btn-default"
+			| &nbsp;
+			= link_to 'Cancel', checklist_items_path, :class => 'btn btn-sm btn-default'

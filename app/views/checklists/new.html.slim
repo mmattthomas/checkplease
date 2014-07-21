@@ -1,14 +1,7 @@
 - model_class = Checklist
 .page-header
 	h1 = "Create a new Checklist"
-	= form_for @checklist do |f|
-		== render partial: 'form', locals: {:f=>f}
-		br
-		.actions
-			= f.submit 'Create', class: "btn btn-sm btn-default"
-			| &nbsp;
-			= link_to 'Cancel', checklists_path, :class => 'btn btn-sm btn-default'
-
+	== render partial: 'form'
 	br
 p
 	|	Be sure to edit and add tasks after you create this checklist.  Only then, the assigned email address will receive a reminder notification on the specified day, reminding him or her to complete this list.  In the future, we'll compile statistics and allow you to configure yourself to get an email letting you know the person completed the tasks, etc.  What a wonderful way to get things done!
