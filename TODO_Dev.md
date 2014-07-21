@@ -15,8 +15,6 @@ Development
 * 	[X] Fix redirect/renders when items deleted
 * [X] Create notifications
 * [X] Fix Delete button on modal forms... at the moment, I've reverted to javscript prompts :(
-* [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc. Investigate "dashing" gem
-* [ ] Notificaiton to create user with completion statistics
 * [X] better confirm dialogs : http://www.pjmccormick.com/nicer-rails-confirm-dialogs-and-not-just-delete-methods
 * [X] Better splash page before login (don't show the list)
 * [X] Filter to just MY checklists after login
@@ -25,9 +23,16 @@ Development
 * [X] Flash message (maybe permanent) after creating NEW checklist that gives instructions on what to do next
 * [X] Hide checklist_id field on checklist items form (this form should be going away anyways)
 * [X] replace "Open" link with "Delete" link for checklist items
+* [X] Put login form right on the front page
+* [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc. Investigate "dashing" gem
+* [ ] Notificaiton to create user with completion statistics
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
 * [ ] Gut/Improve simple forms used for registration
-* [ ] Add cancancan gem
+	* [ ] login
+	* [ ] register
+	* [ ] forgot password
+	* [ ] profile
+* [X] Add cancancan gem
 * [ ] Tighten authorization, remove needless routes
 * [ ] Remove assigned_to dropdown, instead, email address (or dropdown with name)
 * [ ] Added features to Checklist:

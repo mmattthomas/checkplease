@@ -35,6 +35,4 @@
   - if user_signed_in?
   	=link_to t('.new', :default => t("helpers.links.new")), new_checklist_path, :class => 'btn btn-primary'
 - else
-  .jumbotron
-    h1 <i class="fa fa-check-square-o fa-lg"></i> Checkplease!
-    h4 America's number one trusted place to make a list.
+  = render 'static_pages/home'
