@@ -29,9 +29,10 @@ Development
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
 * [ ] Gut/Improve simple forms used for registration
 	* [X] login
-	* [ ] register
+	* [X] register
 	* [ ] forgot password
-	* [ ] profile
+	* [X] profile
+	* [ ] make sure error messages work on all of these
 * [X] Add cancancan gem
 * [ ] Tighten authorization, remove needless routes
 * [ ] Remove assigned_to dropdown, instead, email address (or dropdown with name)
