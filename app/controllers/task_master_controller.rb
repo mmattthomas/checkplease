@@ -48,6 +48,7 @@ class TaskMasterController < ApplicationController
           task = Task.new
           task.checklist_id = cl.id
           task.assigned_to_id = cl.assigned_to_id
+          task.assigned_to_email = cl.assigned_to_email
           task.task_date = Date.today
           task.save!
 

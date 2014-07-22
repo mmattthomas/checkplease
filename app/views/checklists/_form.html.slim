@@ -3,17 +3,17 @@
     .col-md-3
       = f.label :name
     .col-md-9
-      = f.text_field :name, size: "60"
+      = f.text_field :name, :class => "form-control"
   fieldset
     .col-md-3
       = f.label :description
     .col-md-9
-      = f.text_area :description, :cols => "62", :rows => "4"
+      = f.text_area :description, :class => "form-control"
   fieldset
     .col-md-3
-      = f.label :assigned_to
+      = f.label "Assign to"
     .col-md-6
-      = f.select :assigned_to_id, @users.map {|u| [u.email, u.id]}, { include_blank: true }, { :class => "form-control" }
+      = f.email_field :assigned_to_email, :class => "form-control"
   fieldset
     .col-md-3
       = f.label :recur_on
@@ -25,7 +25,17 @@
     .col-md-6
       = f.date_field :expires_on
   fieldset
-    .actions
+    .col-md-3
+      = f.label :start_on
+    .col-md-6
+      = f.date_field :start_on
+  fieldset
+    .col-md-3
+      = f.label :notify_hour
+    .col-md-6
+      = f.select :notify_hour, [["8:00 AM", 8], ["12:00 PM", 12], ["5:00 PM", 17], ["11:00 PM", 23]], { include_blank: false }, { :class => "form-control" }
+  fieldset
+    .actions[style="text-align:right"]
       - if @checklist.id.nil?
         = f.submit 'Create!', class: "btn btn-sm btn-default"
         | &nbsp;

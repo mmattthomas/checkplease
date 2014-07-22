@@ -27,19 +27,19 @@ Development
 * [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc. Investigate "dashing" gem
 * [ ] Notificaiton to create user with completion statistics
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
-* [ ] Gut/Improve simple forms used for registration
+* [X] Gut/Improve simple forms used for registration
 	* [X] login
 	* [X] register
-	* [ ] forgot password
+	* [X] forgot password
 	* [X] profile
-	* [ ] make sure error messages work on all of these
+	* [X] make sure error messages work on all of these
 * [X] Add cancancan gem
 * [ ] Tighten authorization, remove needless routes
 * [ ] Remove assigned_to dropdown, instead, email address (or dropdown with name)
 * [ ] Added features to Checklist:
 *		[ ] Recurring is OPTIONAL
-*   [ ] Start date or "First day"
-*   [ ] Hour, or Time of day when reminder should be sent
+*   [X] Start date or "First day"
+*   [X] Hour, or Time of day when reminder should be sent
 * [ ] A way for users who aren't yet signed up to sign up when they get an email w/ task link (also validation here)
 * [ ] Tasklist instance, some callback positive re-inforcement when items are checked.  And actions to take when checkboxes are checked some positive way
 * [ ] Anonymous feature : option on checklist, or deduce based on if email is in user table, generate and send obfuscated task id URLs.  More security, etc.

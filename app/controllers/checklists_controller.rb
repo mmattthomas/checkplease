@@ -23,6 +23,7 @@ class ChecklistsController < ApplicationController
   # GET /checklists/new
   def new
     @checklist = Checklist.new
+    @checklist.assigned_to_email = current_user.email
     @users = User.all
     @checklist.assigned_to_id = current_user.id   #might need IDs
   end
@@ -39,6 +40,12 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.new(checklist_params)
 
     @checklist.create_user = current_user
+
+    #Lookup ID if it exists
+    assignee = User.find_by(email: @checklist.assigned_to_email)
+    if !assignee.nil?
+      @checklist.assigned_to_id = assignee.id
+    end
 
     respond_to do |format|
       if @checklist.save
@@ -57,6 +64,14 @@ class ChecklistsController < ApplicationController
   # PATCH/PUT /checklists/1
   # PATCH/PUT /checklists/1.json
   def update
+
+    #Set Assigned Use if exists
+    assignee = User.find_by(email: @checklist.assigned_to_email)
+    if !assignee.nil?
+      @checklist.assigned_to_id = assignee.id
+    else
+      @checklist.assigned_to_id = nil
+    end
 
     respond_to do |format|
       if @checklist.update(checklist_params)
@@ -84,6 +99,12 @@ class ChecklistsController < ApplicationController
   end
 
   private
+    def set_assignee(checklist)
+      if !checklist.nil?
+        checklist.assigned_to_id = User.find_by email: checklist.assigned_to_email
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_checklist
       @checklist = Checklist.find(params[:id])
@@ -92,6 +113,7 @@ class ChecklistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checklist_params
-      params.require(:checklist).permit(:name, :description, :expires_on, :create_user, :recur_on, :assigned_to_id)
+      params.require(:checklist).permit(:name, :description, :expires_on, :create_user, :recur_on, :assigned_to_id,
+                                        :assigned_to_email, :start_on, :notify_hour)
     end
 end
