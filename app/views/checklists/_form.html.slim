@@ -3,7 +3,7 @@
     .col-md-3
       = f.label :name
     .col-md-9
-      = f.text_field :name, :class => "form-control"
+      = f.text_field :name, required: true, class: "form-control"
   fieldset
     .col-md-3
       = f.label :description
@@ -13,12 +13,12 @@
     .col-md-3
       = f.label "Assign to"
     .col-md-6
-      = f.email_field :assigned_to_email, :class => "form-control"
+      = f.email_field :assigned_to_email, required: true, class: "form-control"
   fieldset
     .col-md-3
       = f.label :start_on
     .col-md-6
-      = f.date_field :start_on
+      = f.date_field :start_on, required: true
   fieldset
     .col-md-3
       = f.label :expires_on

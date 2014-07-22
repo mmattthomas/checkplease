@@ -39,10 +39,11 @@ Development
 	* [X] make sure error messages work on all of these
 * [X] Add cancancan gem
 * [ ] Tighten authorization, remove needless routes
+* [ ] cron rake job for fixing up checklists' assigned_to fields
 * [X] Remove assigned_to dropdown, instead, email address (or dropdown with name)
 * [ ] Added features to Checklist:
 *		[ ] Recurring is OPTIONAL
-*   [X] Start date or "First day"
+*   [X] Start date or "First day", is required
 *   [X] Hour, or Time of day when reminder should be sent
 * [ ] A way for users who aren't yet signed up to sign up when they get an email w/ task link (also validation here)
 * [ ] Tasklist instance, some callback positive re-inforcement when items are checked.  And actions to take when checkboxes are checked some positive way

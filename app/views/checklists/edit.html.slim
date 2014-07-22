@@ -5,21 +5,25 @@
 		= "#{@checklist.name}"
 	br
 	== render partial: 'form'
-	
+
 	br
 	table.table.table-striped
 		tr.info
+			th &nbsp;
 			th = "Item"
 			th = "Description"
 			th
 		tbody
 			- @checklist_items.each do |ci|
 				tr
+					td = link_to '', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'fa fa-trash-o fa-lg'
 					td = best_in_place ci, :check_name, nil: '{{enter item}}'
 					td = best_in_place ci, :check_description, nil: '<div class="light_text">{{click to add description}}</div>'
-					td = link_to 'Delete', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
+					td
+					/= link_to 'Delete', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
 			= form_for @new_checklist_item do |fi|
 				tr
+					td &nbsp;
 					td = fi.text_field :check_name, {size: "30", placeholder: 'Add new checklist item'}
 					td = fi.text_field :check_description, {size: "30", placeholder: 'new item description'}
 					td
