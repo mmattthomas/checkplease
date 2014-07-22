@@ -29,7 +29,8 @@ Development
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
 * [ ] Add "position" fields to checklist_items and task_items, and code to auto-generate for sort
 * [ ] Sort on position
-* [ ] improve scopes, or queries for getting checklists
+* [ ] fav icons!
+* [X] improve scopes, or queries for getting checklists
 * [X] Gut/Improve simple forms used for registration
 	* [X] login
 	* [X] register
@@ -38,7 +39,7 @@ Development
 	* [X] make sure error messages work on all of these
 * [X] Add cancancan gem
 * [ ] Tighten authorization, remove needless routes
-* [ ] Remove assigned_to dropdown, instead, email address (or dropdown with name)
+* [X] Remove assigned_to dropdown, instead, email address (or dropdown with name)
 * [ ] Added features to Checklist:
 *		[ ] Recurring is OPTIONAL
 *   [X] Start date or "First day"
