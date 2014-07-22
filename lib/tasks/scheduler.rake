@@ -5,7 +5,7 @@ namespace :scheduler do
     tasks_created = 0
 
     # this will create all tasks for current day
-    @checklists = get_checklists_for_today
+    @checklists = Checklist.for_today
     todays_tasks = []
 
     @checklists.each do |cl|
@@ -43,8 +43,8 @@ namespace :scheduler do
   desc "Undo all tasks for current DAY"
   task undo_make_tasks: :environment do
     count_deleted = 0
-    today = Date::DAYNAMES[Date.today.wday]
-    @checklists = Checklist.for_when today
+    
+    @checklists = Checklist.for_today
 
     @checklists.each do |cl|
       tasks = cl.tasks.for_today

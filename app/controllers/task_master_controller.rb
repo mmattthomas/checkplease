@@ -34,7 +34,7 @@ class TaskMasterController < ApplicationController
       end
 
       # this will create all tasks for current day
-      @checklists = get_checklists_for_today
+      @checklists = Checklist.for_today
 
       puts "***>>>  count of checklists is #{@checklists.length}"
 
@@ -91,7 +91,7 @@ class TaskMasterController < ApplicationController
     def batch_task_remove
       @count_deleted = 0
       today = Date::DAYNAMES[Date.today.wday]
-      @checklists = Checklist.for_when today
+      @checklists = Checklist.for_today
 
       @checklists.each do |cl|
         tasks = cl.tasks.for_today

@@ -27,6 +27,9 @@ Development
 * [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc. Investigate "dashing" gem
 * [ ] Notificaiton to create user with completion statistics
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
+* [ ] Add "position" fields to checklist_items and task_items, and code to auto-generate for sort
+* [ ] Sort on position
+* [ ] improve scopes, or queries for getting checklists
 * [X] Gut/Improve simple forms used for registration
 	* [X] login
 	* [X] register
@@ -43,3 +46,6 @@ Development
 * [ ] A way for users who aren't yet signed up to sign up when they get an email w/ task link (also validation here)
 * [ ] Tasklist instance, some callback positive re-inforcement when items are checked.  And actions to take when checkboxes are checked some positive way
 * [ ] Anonymous feature : option on checklist, or deduce based on if email is in user table, generate and send obfuscated task id URLs.  More security, etc.
+* [ ] Remove banner navigation, its not really needed.  Smaller nav somewhere for couple basics, Profile,Lists.  Floating, hidden? (see previous projects, i could've sworn i did this - rescipe?)
+* [ ] List of my tasks, or my incomplete tasks
+* [ ] ADVANCED FEATURE - quick note, open text box, first line is name of checklist, second line is email assigned to.  All subsequent lines that start with *, -, =, or whatever are line items.  start date is today, expires one month.

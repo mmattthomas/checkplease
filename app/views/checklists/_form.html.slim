@@ -16,9 +16,9 @@
       = f.email_field :assigned_to_email, :class => "form-control"
   fieldset
     .col-md-3
-      = f.label :recur_on
+      = f.label :start_on
     .col-md-6
-      = f.select :recur_on, ['Every Day', 'Weekdays', 'Weekends', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], { include_blank: true }, { :class => "form-control" }
+      = f.date_field :start_on
   fieldset
     .col-md-3
       = f.label :expires_on
@@ -26,14 +26,14 @@
       = f.date_field :expires_on
   fieldset
     .col-md-3
-      = f.label :start_on
+      = f.label :recur_on
     .col-md-6
-      = f.date_field :start_on
-  fieldset
-    .col-md-3
-      = f.label :notify_hour
-    .col-md-6
-      = f.select :notify_hour, [["8:00 AM", 8], ["12:00 PM", 12], ["5:00 PM", 17], ["11:00 PM", 23]], { include_blank: false }, { :class => "form-control" }
+      = f.select :recur_on, ['Every Day', 'Weekdays', 'Weekends', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], { include_blank: true }, { :class => "form-control" }
+  / fieldset
+  /  .col-md-3
+  /    = f.label :notify_hour
+  /  .col-md-6
+  /    = f.select :notify_hour, [["8:00 AM", 8], ["12:00 PM", 12], ["5:00 PM", 17], ["11:00 PM", 23]], { include_blank: false }, { :class => "form-control" }
   fieldset
     .actions[style="text-align:right"]
       - if @checklist.id.nil?

@@ -20,4 +20,22 @@ class Checklist < ActiveRecord::Base
   scope :for_user_id, lambda {|query| where(["create_user_id = ?", "#{query.to_i}"])}
   #scope :for_recur, lambda {|query| where(["recur_on LIKE ?", "%#{query}%"])}
 
+  def self.for_today
+
+    today = Date::DAYNAMES[Date.today.wday]
+
+    if today == "Saturday" || today == "Sunday"
+      recur_string = "(recur_on = 'Every Day' OR recur_on = 'Weekends' OR recur_on = ?) "
+    else
+      recur_string = "(recur_on = 'Every Day' OR recur_on = 'Weekdays' OR recur_on = ?) "
+    end
+
+    time_string = " AND (start_on <= ? AND (expires_on > ? OR expires_on IS NULL))"
+
+    query_string = recur_string + time_string
+
+    where query_string, today, Date.today, Date.today
+
+  end
+
 end
