@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     @user = current_user
     @task = Task.find params[:id]
     @checklist = @task.checklist
-    @task_items = @task.task_items
+    @task_items = @task.task_items.sorted
   end
 
   def show

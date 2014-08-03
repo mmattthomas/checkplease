@@ -15,6 +15,7 @@ class TaskItem < ActiveRecord::Base
 	scope :for_today, lambda { where("created_at >= ? and created_at <= ?",
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
+	scope :sorted, lambda { order("task_items.created_at ASC")}
 	#note, time zones applicable?  create fields should be all on server, right?
 
 end

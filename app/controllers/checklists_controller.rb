@@ -24,6 +24,9 @@ class ChecklistsController < ApplicationController
   def new
     @checklist = Checklist.new
     @checklist.assigned_to_email = current_user.email
+    @checklist.start_on = Date.today
+    @checklist.expires_on = 1.month.since(@checklist.start_on)
+    @checklist.recur_on = "Every Day"
     @users = User.all
     @checklist.assigned_to_id = current_user.id   #might need IDs
   end
@@ -108,7 +111,7 @@ class ChecklistsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_checklist
       @checklist = Checklist.find(params[:id])
-      @checklist_items = @checklist.checklist_items
+      @checklist_items = @checklist.checklist_items.sorted
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

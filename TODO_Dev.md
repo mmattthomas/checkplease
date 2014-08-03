@@ -27,8 +27,7 @@ Development
 * [ ] Create statistics.  How may times task is completed, how many times taskLIST is completed, etc. Investigate "dashing" gem
 * [ ] Notificaiton to create user with completion statistics
 * [ ] Add a "Name" field to User Model & Registration/Settings forms
-* [ ] Add "position" fields to checklist_items and task_items, and code to auto-generate for sort
-* [ ] Sort on position
+* [X] Change task items and checklist items to always sort on created_at so order doesn't change
 * [ ] fav icons!
 * [X] improve scopes, or queries for getting checklists
 * [X] Gut/Improve simple forms used for registration
@@ -39,11 +38,12 @@ Development
 	* [X] make sure error messages work on all of these
 * [X] Add cancancan gem
 * [ ] Tighten authorization, remove needless routes
-* [ ] cron rake job for fixing up checklists' assigned_to fields
+* [X] cron rake job for fixing up checklists' assigned_to fields
 * [X] Remove assigned_to dropdown, instead, email address (or dropdown with name)
 * [ ] Added features to Checklist:
 *		[ ] Recurring is OPTIONAL
 *   [X] Start date or "First day", is required
+*		[X] Start date should be prepopulated w/ today's date
 *   [X] Hour, or Time of day when reminder should be sent
 * [ ] A way for users who aren't yet signed up to sign up when they get an email w/ task link (also validation here)
 * [ ] Tasklist instance, some callback positive re-inforcement when items are checked.  And actions to take when checkboxes are checked some positive way
