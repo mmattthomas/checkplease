@@ -18,4 +18,8 @@ class Task < ActiveRecord::Base
 	scope :for_today, lambda { where("created_at >= ? and created_at <= ?",
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
+	scope :uncompleted, lambda { where("tasks.id in (select task_id from task_items where completed = false)") }
+
+	scope :my_uncompleted, lambda {|query| where(["(tasks.id in (select task_id from task_items where completed = false)) and assigned_to_id = ?", query])}
+
 end

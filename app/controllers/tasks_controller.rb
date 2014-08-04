@@ -1,5 +1,9 @@
 class TasksController < ApplicationController
 
+  def index
+    @tasks = Task.my_uncompleted current_user
+  end
+
   def edit
     @user = current_user
     @task = Task.find params[:id]
