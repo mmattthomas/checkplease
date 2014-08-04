@@ -13,9 +13,9 @@
 	<ol>
 		<% @task.task_items.each do |item| %>
 			<% if item.completed %>
-				<li> <i class="fa fa-check-square-o fa-lg"></i> <%= item.checklist_item.check_name %></li>
+				<li> [X] <%= item.checklist_item.check_name %></li>
 			<% else %>
-				<li> <i class="fa fa-square-o fa-lg"></i> <%= item.checklist_item.check_name %></li>
+				<li> [&nbsp;&nbsp;] <%= item.checklist_item.check_name %></li>
 			<% end %>
 		<% end %>
 	</ol>
