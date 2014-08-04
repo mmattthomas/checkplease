@@ -19,7 +19,18 @@ class Task < ActiveRecord::Base
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
 	scope :uncompleted, lambda { where("tasks.id in (select task_id from task_items where completed = false)") }
+	scope :completed, lambda { where("tasks.id in (select task_id from task_items where completed = true)") }
 
 	scope :my_uncompleted, lambda {|query| where(["(tasks.id in (select task_id from task_items where completed = false)) and assigned_to_id = ?", query])}
+
+	def get_percent_complete
+		if self.task_items.incomplete.length == 0
+			100
+		else
+			pc = (self.task_items.length - self.task_items.incomplete.length) / self.task_items.length.to_f * 100
+			pc.to_i
+		end
+
+	end
 
 end

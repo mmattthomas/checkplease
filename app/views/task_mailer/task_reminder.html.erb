@@ -1,12 +1,25 @@
-<h1><%= @task.checklist.name %></h1>
-<br/>
-<p>Hey there!  You have some things to do!  Here is your checklist for today.</p>
-<p><a href="<%=@task_url%>">Click here to go complete your tasks!</a></p>
-<ol>
-	<% @task.task_items.each do |item| %>
-		<li> &#9744; <%= item.checklist_item.check_name %></li>
-	<% end %>
-</ol>
-<br/>
-<p><i>Thanks for using Checkplease!  America's number one thing people use sometimes.</i></p>
-<br/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<h1><%= @task.checklist.name %></h1>
+	<br/>
+	<p>Hey there!  You have some things to do!  Here is your checklist for today.</p>
+	<p><a href="<%=@task_url%>">Click here to go complete your tasks!</a></p>
+	<ol>
+		<% @task.task_items.each do |item| %>
+			<% if item.completed %>
+				<li> <i class="fa fa-check-square-o fa-lg"></i> <%= item.checklist_item.check_name %></li>
+			<% else %>
+				<li> <i class="fa fa-square-o fa-lg"></i> <%= item.checklist_item.check_name %></li>
+			<% end %>
+		<% end %>
+	</ol>
+	<br/>
+	<p><i>Thanks for using Checkplease!  America's number one thing people use sometimes.</i></p>
+	<br/>
+</body>

@@ -41,7 +41,8 @@ Development
 * [X] cron rake job for fixing up checklists' assigned_to fields
 * [X] Remove assigned_to dropdown, instead, email address (or dropdown with name)
 * [ ] Added features to Checklist:
-*		[ ] Recurring is OPTIONAL
+*		[ ] Recurring is OPTIONAL...
+*				[ ]if no recurrence, reminder sent daily for incomplete?
 *   [X] Start date or "First day", is required
 *		[X] Start date should be prepopulated w/ today's date
 *   [X] Hour, or Time of day when reminder should be sent

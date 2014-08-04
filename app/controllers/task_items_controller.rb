@@ -42,6 +42,11 @@ class TaskItemsController < ApplicationController
   def update
     respond_to do |format|
       if @task_item.update(task_item_params)
+
+        #TODO - mark task's % completion
+        pct_complete = (@task_item.task.task_items.complete.length / @task_item.task.task_items.length.to_f) * 100
+        @task_item.task.update_attribute :percent_complete, pct_complete.to_i
+        @task_item.task.update_attribute :complete, (pct_complete.to_i == 100)
         format.html { redirect_to @task_item, notice: 'Task item was successfully updated.' }
         format.json { render :show, status: :ok, location: @task_item }
       else

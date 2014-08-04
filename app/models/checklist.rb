@@ -38,4 +38,15 @@ class Checklist < ActiveRecord::Base
 
   end
 
+  #TODO - scope for checklists non-recurring (recur_on = nil)
+  def self.non_recurring_for_today
+    today = Date::DAYNAMES[Date.today.wday]
+
+    time_string = " AND (start_on <= ? AND (expires_on > ? OR expires_on IS NULL))"
+
+    query_string = "(recur_on IS NULL OR recur_on = '')" + time_string
+
+    where query_string, Date.today, Date.today
+  end
+
 end

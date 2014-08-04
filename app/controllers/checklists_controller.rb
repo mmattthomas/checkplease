@@ -26,7 +26,7 @@ class ChecklistsController < ApplicationController
     @checklist.assigned_to_email = current_user.email
     @checklist.start_on = Date.today
     @checklist.expires_on = 1.month.since(@checklist.start_on)
-    @checklist.recur_on = "Every Day"
+    #@checklist.recur_on = "Every Day"  #mmt, no default now, non-recurring is the default
     @users = User.all
     @checklist.assigned_to_id = current_user.id   #might need IDs
   end

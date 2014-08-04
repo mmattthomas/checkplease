@@ -14,6 +14,7 @@ class TaskItem < ActiveRecord::Base
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
 	scope :incomplete, lambda { where("task_items.completed = false") }
+	scope :complete, lambda { where("task_items.completed = true") }
 
 	scope :sorted, lambda { order("task_items.created_at ASC") }
 	#note, time zones applicable?  create fields should be all on server, right?
