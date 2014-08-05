@@ -1,46 +1,38 @@
 = form_for @checklist do |f|
-  fieldset
-    .col-md-3
-      = f.label :name
-    .col-md-9
-      = f.text_field :name, required: true, class: "form-control"
-  fieldset
-    .col-md-3
-      = f.label :description
-    .col-md-9
-      = f.text_area :description, :class => "form-control"
-  fieldset
-    .col-md-3
-      = f.label "Assign to"
-    .col-md-6
-      = f.email_field :assigned_to_email, required: true, class: "form-control"
-  fieldset
-    .col-md-3
-      = f.label :start_on
-    .col-md-6
-      = f.date_field :start_on, required: true
-  fieldset
-    .col-md-3
-      = f.label :expires_on
-    .col-md-6
-      = f.date_field :expires_on
-  fieldset
-    .col-md-3
-      = f.label :recur_on
-    .col-md-6
-      = f.select :recur_on, ['Every Day', 'Weekdays', 'Weekends', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], { include_blank: true }, { :class => "form-control" }
-  / fieldset
-  /  .col-md-3
-  /    = f.label :notify_hour
-  /  .col-md-6
-  /    = f.select :notify_hour, [["8:00 AM", 8], ["12:00 PM", 12], ["5:00 PM", 17], ["11:00 PM", 23]], { include_blank: false }, { :class => "form-control" }
-  fieldset
-    .actions[style="text-align:right"]
-      - if @checklist.id.nil?
-        = f.submit 'Create!', class: "btn btn-sm btn-default"
-        | &nbsp;
-        = link_to 'Cancel', checklists_path, :class => 'btn btn-sm btn-danger'
-      - else
-        = f.submit 'Update', class: "btn btn-sm btn-default"
-        | &nbsp;
-        = link_to 'Delete List!', checklist_path, :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
+  .container
+    .row
+      .col-md-9
+        .form-group
+          = f.label :name
+          = f.text_field :name, required: true, class: "form-control"
+        .form-group
+          = f.label :description
+          = f.text_area :description, :class => "form-control"
+        .form-group
+          = f.label "Assign to"
+          = f.email_field :assigned_to_email, required: true, class: "form-control"
+          .row
+            .col-xs-4
+              .form-group
+                  = f.label "Create a new tasklist every ..."
+                  = f.select :recur_on, ['Every Day', 'Weekdays', 'Weekends', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], { include_blank: true }, { :class => "form-control" }
+      .col-md-3
+        .form-group
+          = f.label :start_on
+          = f.date_field :start_on, required: true, class: "form-control"
+        .form-group
+          = f.label :expires_on
+          = f.date_field :expires_on, class: "form-control"
+
+    .row
+      .col-md-12
+        .form-group
+          .actions
+            - if @checklist.id.nil?
+              = f.submit 'Create!', class: "btn btn-sm btn-default"
+              | &nbsp;
+              = link_to 'Cancel', checklists_path, :class => 'btn btn-sm btn-danger'
+            - else
+              = f.submit 'Update', class: "btn btn-sm btn-default"
+              | &nbsp;
+              = link_to 'Delete List!', checklist_path, :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
