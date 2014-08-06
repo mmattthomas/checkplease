@@ -103,26 +103,6 @@ class TaskMasterController < ApplicationController
       end
     end
 
-    def get_checklists_for_today
-      today = Date::DAYNAMES[Date.today.wday]
-      case today
-        when "Monday"
-          Checklist.for_monday
-        when "Tuesday"
-          Checklist.for_tuesday
-        when "Wednesday"
-          Checklist.for_wednesday
-        when "Thursday"
-          Checklist.for_thursday
-        when "Friday"
-          Checklist.for_friday
-        when "Saturday"
-          Checklist.for_saturday
-        else
-          Checklist.for_sunday
-      end
-    end
-
     def create_reminder_messages tasks
 
       tasks.each do |t|
