@@ -16,6 +16,7 @@
               .form-group
                   = f.label "Create a new tasklist every ..."
                   = f.select :recur_on, ['Every Day', 'Weekdays', 'Weekends', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], { include_blank: true }, { :class => "form-control" }
+                  i If this field is left empty, You will be notified every day to complete that one checklist.  Otherwise, you'll have a brand new list each time to complete!
       .col-md-3
         .form-group
           = f.label :start_on
