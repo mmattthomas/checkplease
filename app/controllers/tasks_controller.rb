@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.my_uncompleted current_user
+    @tasks = Task.my_uncompleted(current_user).sorted
   end
 
   def edit

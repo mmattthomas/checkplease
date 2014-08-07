@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
 	#scope :for_sun, lambda { where(:recur_on=>'Sunday')}
 	#scope :for_when, lambda {|query| where(["recur_on LIKE ?", "#{query.titlecase}"])}
 	#scope :for_recur, lambda {|query| where(["recur_on LIKE ?", "%#{query}%"])}
-
+	scope :sorted, lambda { order("tasks.task_date ASC")}
 	scope :for_today, lambda { where("created_at >= ? and created_at <= ?",
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
