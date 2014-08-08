@@ -2,17 +2,18 @@
 	h1= "#{@checklist.name}"
 	p="#{@checklist.description}"
 	br
-	table.table.table-striped
-		tr.info
-			th Task
-			th Description
-			th align="center" Complete
-			th Completion Notes
-		tbody
-			- @task_items.sorted.each do |task_item|
-				tr
-					td = task_item.checklist_item.check_name
-					td = task_item.checklist_item.check_description
-					td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")]
-					td = best_in_place task_item, :notes
-	br
+table.table.table-striped
+	tr.info
+		th Task
+		th Description
+		th align="center" Complete
+		th Completion Notes
+	tbody
+		- @task_items.sorted.each do |task_item|
+			tr id="row#{task_item.id}"
+				td = task_item.checklist_item.check_name
+				td = task_item.checklist_item.check_description
+				td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")], classes: 'taskcheck', :data => {:percent_complete => task_item.get_a_num}
+				td = best_in_place task_item, :notes
+br
+= link_to t('.back', :default => t("helpers.links.back")), tasks_path, :class => 'btn btn-default'

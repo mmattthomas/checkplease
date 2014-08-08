@@ -19,4 +19,8 @@ class TaskItem < ActiveRecord::Base
 	scope :sorted, lambda { order("task_items.created_at ASC") }
 	#note, time zones applicable?  create fields should be all on server, right?
 
+	def get_a_num
+		DateTime.now.strftime "%S"
+	end
+
 end
