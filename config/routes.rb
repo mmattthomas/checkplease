@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/rerun_taskmaster' => 'task_master#remake_all_for_today'
   get '/undo_taskmaster' => 'task_master#undo_all_for_today'
 
-  devise_for :users
+  devise_for :users #, :controllers => {:registrations => "registrations"}
   get '/' => 'checklists#index'
 
   resources :checklists

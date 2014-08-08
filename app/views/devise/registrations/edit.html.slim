@@ -11,11 +11,19 @@
           | Currently waiting confirmation for:
           = resource.unconfirmed_email
     .form_group
-      = f.label :password
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form_group
+      = f.label 'New Password'
       = f.password_field :password, class: 'form-control'
     .form_group
-      = f.label :password_confirmation
+      = f.label 'New Password Confirmation'
       = f.password_field :password_password_confirmation, class: 'form-control'
+    .form_group
+      = f.label :current_password
+      i &nbsp;&nbsp;We need your current password to make any other changes to your profile
+      = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+
     .actions[style="text-align:right"]
       = f.submit 'Update Profile', class: 'btn btn-primary'
       | &nbsp;
