@@ -11,6 +11,7 @@ class Checklist < ActiveRecord::Base
   #scope :for_sun, lambda { where(:recur_on=>'Sunday')}
   scope :for_when, lambda {|query| where(["recur_on LIKE ? OR recur_on ='Day'", "#{query.titlecase}"])}
   scope :for_user_id, lambda {|query| where(["create_user_id = ?", "#{query.to_i}"])}
+  scope :for_assigned_to_email, lambda {|query| where(["checklists.assigned_to_email = ?", "#{query}"])}
   #scope :for_recur, lambda {|query| where(["recur_on LIKE ?", "%#{query}%"])}
 
   def self.for_today

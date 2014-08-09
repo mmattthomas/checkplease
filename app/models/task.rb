@@ -18,6 +18,7 @@ class Task < ActiveRecord::Base
 	scope :for_today, lambda { where("created_at >= ? and created_at <= ?",
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
+	scope :for_assigned_to_email, lambda {|query| where(["tasks.assigned_to_email = ?", "#{query}"])}
 	scope :uncompleted, lambda { where("tasks.id in (select task_id from task_items where completed = false)") }
 	scope :completed, lambda { where("tasks.id in (select task_id from task_items where completed = true)") }
 
