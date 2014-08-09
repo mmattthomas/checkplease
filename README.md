@@ -4,8 +4,10 @@ Checkplease Application
 ###Want to get things done?  Make a checklist
 
 At Checkplease, you can create to-do lists or check-lists that can be assigned to yourself or someone else to complete.  They can be one-time, or recurring.  You can configure yourself to be notified of statistics when these tasks are completed.  Features include:
-* Create one-time, or recurring checklists
+* Create a single checklist
+* Create a "recurring" checklist, a new fully not-complete list will be generated each night
+* Complete each list, and add notes as you complete
 * Assign checklists to people via email
-* Automatically send reminders of checklist information to users
-* Track completion of these checklists
-* For whoever you assign the list to, you can set whether they have to be a user of checklist (more secure) or not (anyone can complete the list, but the person emailed will be sent a secret URL)
+* Non complete lists will have reminders sent out each night
+* If you assign a checklist to someone that doesn't have a checklist.cc account, they will have the list emailed to them.  As soon as they create an account, they can then go and complete those checklists.
+* In the future I hope to build greater flexibility to meet the needs of the users.  Especially important to me is statistics and reporting on completed lists (perhaps sent via email)
