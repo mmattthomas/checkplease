@@ -42,17 +42,20 @@ class TaskItemsController < ApplicationController
   def update
     respond_to do |format|
       if @task_item.update(task_item_params)
-        @ajax_response = "hi!"
+        @message = ""
         #TODO - mark task's % completion
         pct_complete = (@task_item.task.task_items.complete.length / @task_item.task.task_items.length.to_f) * 100
         @task_item.task.update_attribute :percent_complete, pct_complete.to_i
         @task_item.task.update_attribute :complete, (pct_complete.to_i == 100)
-        format.html { redirect_to @task_item, notice: 'Task item was successfully updated.' }
+        #format.html { redirect_to @task_item, notice: 'Task item was successfully updated.' }
+        if pct_complete.to_i == 100
+          @message = "Congratulations!  You finished your tasks!"
+        end
         format.json { render :show, status: :ok, location: @task_item }
         #format.json { respond_with_bip(@task_item) }
       else
         format.html { render :edit }
-        format.json { render json: @task_item.errors, status: :unprocessable_entity }
+        format.json { render json: @task_item.errors, status: :unprocessable_entity}
       end
     end
   end

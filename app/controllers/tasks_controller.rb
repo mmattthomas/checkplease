@@ -16,6 +16,9 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     @checklist = @task.checklist
     @task_items = @task.task_items
+    # if @task.percent_complete == 100
+    #   flash[:success] = 'Congratulations!  This task list is 100% complete!'
+    # end
   end
 
   def update

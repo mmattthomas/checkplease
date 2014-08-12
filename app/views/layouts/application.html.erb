@@ -48,23 +48,24 @@
 
       $(document).ready(function() {
         $('.best_in_place').bind("ajax:success",
-          function () {
+          function (data, textStatus, jqXHR) {
             $(this).closest('tr').find('td').each( function () { $(this).effect('highlight', {}, 1000); });
+            msg = JSON.parse(textStatus);
+            if (msg.message != undefined)
+              if (msg.message.length > 0) {
+                //alert(msg.message);
+                addAlert(msg.message);
+                //console.log('Flash:' + msg.message);
+              }
 
-            // here use ajax call to check if task is fully complete.
-            // seems redundant but we can't seem to get best-in-place to send any pertinent data back from
-            // ajax call
-
-            //taskcount = $('.taskcheck').length;
-            //completecount = $('span[data-value="true"]').length;  // this is always what the original load was
-
-            //percent_complete = $(this).data('percent-complete')
-            //percent_complete = $(this).attr('data-percent-complete');
-            // //find if any are incomplete
-            //if (taskcount > 0)
-            // alert('Percent complete : %' + percent_complete);
           });
         });
+
+        function addAlert(message) {
+          $('#alerts').append('<div class="alert alert-success">' +
+            '<button type="button" class="close" data-dismiss="alert">' +
+            '&times;</button>' + message + '</div>');
+        }
     </script>
   </head>
   <body>
@@ -94,6 +95,7 @@
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
+          <div id="alerts"></div>
           <%= yield %>
         </div>
         <% if !user_signed_in? && request.fullpath != '/users/sign_up' && request.fullpath != '/users' %>

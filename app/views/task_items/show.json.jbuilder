@@ -1,1 +1,2 @@
-json.extract! @task_item, :id, :created_at, :updated_at, :get_a_num
+#json.extract! @task_item, :id, :created_at, :updated_at #, :message
+json.set! :message, @message
