@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   resources :tasks
   get 'tasks/:id'         => "tasks#edit"
-
-  get 'task_master/index'
+  get 'opentasks'         => "tasks#index"
+  get 'closedtasks'       => "tasks#closedindex"
+  #get 'task_master/index'
 
   get '/run_taskmaster' => 'task_master#make_all_for_today'
   get '/rerun_taskmaster' => 'task_master#remake_all_for_today'

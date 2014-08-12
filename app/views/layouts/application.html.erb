@@ -81,7 +81,8 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav nav-pills pull-right">
           <% if user_signed_in? %>
-            <li><%= link_to "My Pending Tasks", "/tasks"  %></li>
+            <li><%= link_to "My Open Tasks", "/opentasks"  %></li>
+            <li><%= link_to "My Closed Tasks", "/closedtasks"  %></li>
             <li><%= link_to "My Checklists", "/checklists"  %></li>
           <% end %>
 					<%= render 'devise/menu/registration_items' %>

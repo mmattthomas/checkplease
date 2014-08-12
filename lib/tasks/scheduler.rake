@@ -60,6 +60,13 @@ namespace :scheduler do
           task.checklist_id = cl.id
           task.assigned_to_id = cl.assigned_to_id
           task.assigned_to_email = cl.assigned_to_email
+          if task.assigned_to_id.nil?
+            assignee = User.find_by(email: task.assigned_to_email)
+            if !assignee.nil?
+              task.assigned_to_id = assignee.id
+            end
+          end
+
           task.task_date = Date.today
           task.save!
 

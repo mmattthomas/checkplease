@@ -4,6 +4,10 @@ class TasksController < ApplicationController
     @tasks = Task.my_uncompleted(current_user).sorted
   end
 
+  def closedindex
+    @tasks = Task.my_recentcompleted(current_user).sorted
+  end
+
   def edit
     @user = current_user
     @task = Task.find params[:id]

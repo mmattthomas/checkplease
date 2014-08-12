@@ -24,6 +24,8 @@ class Task < ActiveRecord::Base
 
 	scope :my_uncompleted, lambda {|query| where(["(tasks.id in (select task_id from task_items where completed = false)) and assigned_to_id = ?", query])}
 
+	scope :my_recentcompleted, lambda {|query| where(["tasks.percent_complete = 100 and task_date >= current_date - interval '7 days'  and assigned_to_id = ?", query])}
+
 	def get_percent_complete
 		if self.task_items.incomplete.length == 0
 			100
