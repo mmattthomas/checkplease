@@ -54,7 +54,6 @@ class Checklist < ActiveRecord::Base
     task = self.tasks.my_uncompleted(user_id).sorted.first
     if task.nil?
       if self.start_on > Date.today || self.expires_on < Date.today
-        puts "went here negative one"
         -1
       else
         -2                            # -2 : no task currently - create one!
