@@ -29,11 +29,11 @@
             - if checklist_status >= 0
               =link_to task_path(checklist.get_most_recent_incomplete_task_for_user(current_user.id).id) do
                 .progress onclick="=task_path(checklist.get_most_recent_incomplete_task_for_user(current_user.id).id)}"
-                  .progress-bar role='progressbar' aria-valuenow="#{checklist.get_dashboard(current_user.id)}" aria-valuemin='0' aria-valuemax='100' style="width: #{checklist.get_dashboard(current_user.id)}%" data-toggle='tooltip' data-placement='top' title='HTML / HTML5'
+                  .progress-bar role='progressbar' aria-valuenow="#{checklist_status.to_s}" aria-valuemin='0' aria-valuemax='100' style="width: #{checklist_status.to_s}%" data-toggle='tooltip' data-placement='top' title='HTML / HTML5'
                     span class="sr-only"
-                      ="#{checklist.get_dashboard(current_user.id).to_s}%"
+                      ="#{checklist_status.to_s}%"
                     span class="progress-type"
-                      ="#{checklist.get_dashboard(current_user.id).to_s}%"
+                      ="#{checklist_status.to_s}%"
             - else
               - if checklist_status == -1
                 | Inactive
