@@ -27,12 +27,8 @@
           td
 						- checklist_status = checklist.get_dashboard(current_user.id)
             - if checklist_status >= 0
-              = "#{checklist_status.to_s}%"
-            - else
-              - if checklist_status == -1
-            		| Inactive
-            	- else
-            		| Not Yet Started
+              = "#{checklist_status.to_s}"
+
   - if user_signed_in? && @checklists.length == 0
     p You have no checklists!  Click New button below to start creating one!
   - if user_signed_in?
