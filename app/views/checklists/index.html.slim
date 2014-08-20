@@ -25,8 +25,7 @@
           td
             = checklist.description
           td
-            - if 1 >= 0
-              = "#{checklist_status.to_s}"
+            = "#{checklist.get_dashboard(current_user.id).to_s}%"
 
   - if user_signed_in? && @checklists.length == 0
     p You have no checklists!  Click New button below to start creating one!
