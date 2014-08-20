@@ -25,9 +25,9 @@
           td
             = checklist.description
           td
-						- checklist_status = -1
+						- checklist_status = checklist.get_dashboard(current_user.id)
             - if checklist_status >= 0
-              ="#{checklist_status.to_s}%"
+              = "#{checklist_status.to_s}%"
             - else
               - if checklist_status == -1
             		| Inactive
