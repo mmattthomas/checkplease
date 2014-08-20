@@ -55,3 +55,4 @@
 
 jQuery ->
   $('.best_in_place').best_in_place()
+  $('checklist_item_check_name').focus()

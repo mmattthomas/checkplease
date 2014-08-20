@@ -43,4 +43,25 @@ class Checklist < ActiveRecord::Base
     where query_string, Date.today, Date.today
   end
 
+  def get_most_recent_incomplete_task_for_user user_id
+    self.tasks.my_uncompleted(user_id).sorted.first
+  end
+
+  # Some special codes here!
+  # -1 : Checklist currently not active
+  # -2 : No task exists ... link to create one!
+  def get_dashboard user_id
+    task = self.tasks.my_uncompleted(user_id).sorted.first
+    if task.nil?
+      if self.start_on > Date.today || self.expires_on < Date.today
+        puts "went here negative one"
+        -1
+      else
+        -2                            # -2 : no task currently - create one!
+      end
+    else
+      task.percent_complete
+    end
+  end
+
 end

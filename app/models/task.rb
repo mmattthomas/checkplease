@@ -19,10 +19,10 @@ class Task < ActiveRecord::Base
 															Date.today.beginning_of_day, Date.today.end_of_day)}
 
 	scope :for_assigned_to_email, lambda {|query| where(["tasks.assigned_to_email = ?", "#{query}"])}
-	scope :uncompleted, lambda { where("tasks.id in (select task_id from task_items where completed = false)") }
+	scope :uncompleted, lambda { where("tasks.id in (select task_id from task_items where coalesce(completed, false) = false)") }
 	scope :completed, lambda { where("tasks.id in (select task_id from task_items where completed = true)") }
 
-	scope :my_uncompleted, lambda {|query| where(["(tasks.id in (select task_id from task_items where completed = false)) and assigned_to_id = ?", query])}
+	scope :my_uncompleted, lambda {|query| where(["(tasks.id in (select task_id from task_items where coalesce(completed, false) = false)) and assigned_to_id = ?", query])}
 
 	scope :my_recentcompleted, lambda {|query| where(["tasks.percent_complete = 100 and task_date >= current_date - interval '7 days'  and assigned_to_id = ?", query])}
 

@@ -5,31 +5,41 @@
   table.table.table-striped
     thead
       tr
-        /th
-          /= model_class.human_attribute_name(:id)
+        th
         th
           = model_class.human_attribute_name(:name)
         th
           = model_class.human_attribute_name(:recur_on)
         th
           = model_class.human_attribute_name(:description)
-        - if user_signed_in?
-          th
-            /=t '.actions', :default => t("helpers.actions")
+        th width="110px"
     tbody
       - @checklists.each do |checklist|
         tr
-          /td
-            /= link_to checklist.id, checklist_path(checklist)
+          td
+            =link_to t('.edit', :default => t("helpers.links.edit")), edit_checklist_path(checklist), :class => 'btn btn-default btn-sm'
           td
             = checklist.name
           td
             = checklist.recur_on
           td
             = checklist.description
-          - if user_signed_in?
-            td
-  					=link_to t('.edit', :default => t("helpers.links.edit")), edit_checklist_path(checklist), :class => 'btn btn-default'
+          td
+            - checklist_status = checklist.get_dashboard(current_user.id)
+            - if checklist_status >= 0
+              =link_to task_path(checklist.get_most_recent_incomplete_task_for_user(current_user.id).id) do
+                .progress onclick="=task_path(checklist.get_most_recent_incomplete_task_for_user(current_user.id).id)}"
+                  .progress-bar role='progressbar' aria-valuenow="#{checklist.get_dashboard(current_user.id)}" aria-valuemin='0' aria-valuemax='100' style="width: #{checklist.get_dashboard(current_user.id)}%" data-toggle='tooltip' data-placement='top' title='HTML / HTML5'
+                    span class="sr-only"
+                      ="#{checklist.get_dashboard(current_user.id).to_s}%"
+                    span class="progress-type"
+                      ="#{checklist.get_dashboard(current_user.id).to_s}%"
+            - else
+              - if checklist_status == -1
+                | Inactive
+              - else
+                | Not Yet Started
+
   - if user_signed_in? && @checklists.length == 0
     p You have no checklists!  Click New button below to start creating one!
   - if user_signed_in?

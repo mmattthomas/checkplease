@@ -17,4 +17,27 @@ namespace :cron do
     puts "Completed.  #{counter} checklists updated."
   end
 
+  desc "Debug Data for Scheduler Jobs"
+  task analyze_scheduler: :environment do
+    c1 = Checklist.for_today.length
+    c2 = Checklist.non_recurring_for_today.length
+    c0 = Checklist.all.length
+
+    t0 = Task.all.length
+    t1 = Task.uncompleted.length
+    t2 = Task.completed.length
+
+    puts "Debug Analysis"
+    puts "--------------"
+    puts "#{c0} total checklists"
+    puts "#{c1} recurring for today"
+    puts "#{c2} non-recurring for today"
+    puts "#{t0} total tasks"
+    puts "#{t1} all uncompleted tasks"
+    puts "#{t2} all completed tasks"
+    puts "--------------"
+
+
+  end
+
 end

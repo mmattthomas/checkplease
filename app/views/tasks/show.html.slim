@@ -16,4 +16,4 @@ table.table.table-striped
 				td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")], classes: 'taskcheck', :data => {:percent_complete => task_item.get_a_num}
 				td = best_in_place task_item, :notes
 br
-= link_to "Back", "#", onclick: "history.back(); return false", :class => 'btn btn-default'
+= link_to "OKAY!", "#", onclick: "history.back(); return false", :class => 'btn btn-default'
