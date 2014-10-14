@@ -1,4 +1,4 @@
-ruby '2.1.1'
+ruby '2.1.2'
 
 source 'https://rubygems.org'
 
@@ -45,7 +45,8 @@ gem 'mail'
 
 # Rest In Place for in place grid editing
 #gem 'rest_in_place'
-gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
+#gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
+gem 'best_in_place', '~> 3.0.0.rc1'
 
 # To manage assets and logs with Heroku:
 group :production do
