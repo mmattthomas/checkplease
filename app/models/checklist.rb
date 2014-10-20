@@ -63,4 +63,20 @@ class Checklist < ActiveRecord::Base
     end
   end
 
+  def print_dashboard user_id
+    task = self.tasks.my_uncompleted(user_id).sorted.first
+    if task.nil?
+      if self.start_on > Date.today || self.expires_on < Date.today
+        return "<div class=\"noload\"><span class=\"loadtext\">0%</span><div class=\"progload\" style=\"width: 0%;\"></div></div>"
+      else
+        return "<div class=\"noload\"><span class=\"loadtext\">start!</span><div class=\"progload\" style=\"width: 0%;\"></div></div>"
+        # -2 : no task currently - create one!
+      end
+    else
+      return "<div class=\"noload\"><span class=\"loadtext\">#{task.percent_complete}%</span><div class=\"progload\" style=\"width: #{task.percent_complete}%;\"></div></div>"
+
+    end
+
+  end
+
 end
