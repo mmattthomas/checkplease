@@ -1,5 +1,7 @@
 class Checklist < ActiveRecord::Base
 
+  enum status: {open: 0, complete: 1, paused: 2, closed: 3}
+
   has_many :checklist_items, :dependent => :destroy
   has_many :task_items, :dependent => :destroy
   has_many :tasks, :dependent => :destroy

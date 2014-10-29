@@ -17,14 +17,14 @@ table.table.table-striped
 		- @checklist_items.each do |ci|
 			tr
 				td = link_to '', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'fa fa-trash-o fa-lg'
-				td = best_in_place ci, :check_name, nil: '{{enter item}}', class: "form-control"
-				td = best_in_place ci, :check_description, nil: '<div class="light_text">{{click to add description}}</div>'
+				td = best_in_place ci, :check_name, place_holder: '{{enter item}}', class: "form-control"
+				td = best_in_place ci, :check_description, place_holder: '<div class="light_text">{{click to add description}}</div>'
 				td
 				/= link_to 'Delete', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
 		= form_for @new_checklist_item do |fi|
 			tr
 				td &nbsp;
-				td = fi.text_field :check_name, {size: "30", placeholder: 'Add new checklist item', class: 'form-control'}
+				td = fi.text_field :check_name, {size: "30", placeholder: 'add new checklist item', class: 'form-control'}
 				td = fi.text_field :check_description, {size: "30", placeholder: 'new item description', class: 'form-control'}
 				td
 					= fi.hidden_field :checklist_id

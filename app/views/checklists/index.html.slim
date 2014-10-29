@@ -8,8 +8,8 @@
         th
         th
           = model_class.human_attribute_name(:name)
-        th
-          = model_class.human_attribute_name(:recur_on)
+        /th
+        /  = model_class.human_attribute_name(:recur_on)
         th
           = model_class.human_attribute_name(:description)
         th width="110px"
@@ -17,11 +17,12 @@
       - @checklists.each do |checklist|
         tr
           td
-            =link_to t('.edit', :default => t("helpers.links.edit")), edit_checklist_path(checklist), :class => 'btn btn-default btn-sm'
+            =link_to content_tag(:i,nil, :class=>"fa fa-pencil-square fa-2x") , edit_checklist_path(checklist)
+            =link_to content_tag(:i,nil, :class=>"fa fa-arrow-circle-right fa-2x") , edit_checklist_path(checklist)
           td
             = checklist.name
-          td
-            = checklist.recur_on
+          /td
+          /  = checklist.recur_on
           td
             = checklist.description
           td
