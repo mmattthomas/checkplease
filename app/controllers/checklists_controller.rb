@@ -18,6 +18,16 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1
   # GET /checklists/1.json
   def show
+    #show gets its time to shine!
+    #this will show a form for the most recent open task to complete, AND at the bottom,
+    #a list of recent tasks instances to go to
+    # so we definitely need to return @checklist, @currenttask, @opentasks[]
+    @open_tasks = Task.uncompleted_for_checklist_and_user(@checklist.id, current_user.id).sorted
+    if @open_tasks.length > 0
+      @current_task = @open_tasks.first
+      @current_task_items = @current_task.task_items.sorted
+    end
+    #puts ">>>>#{@current_task_items.length} task items found"
   end
 
   # GET /checklists/new

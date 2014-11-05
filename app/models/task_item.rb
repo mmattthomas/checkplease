@@ -23,4 +23,12 @@ class TaskItem < ActiveRecord::Base
 		DateTime.now.strftime "%S"
 	end
 
+	def get_display_val
+		if completed = true
+			"[X]"
+		else
+			"[ ]"
+		end
+	end
+
 end

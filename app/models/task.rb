@@ -26,6 +26,10 @@ class Task < ActiveRecord::Base
 
 	scope :my_recentcompleted, lambda {|query| where(["tasks.percent_complete = 100 and task_date >= current_date - interval '7 days'  and assigned_to_id = ?", query])}
 
+	def self.uncompleted_for_checklist_and_user(checklist_id, user_id)
+		where("(tasks.id in (select task_id from task_items where coalesce(completed, false) = false)) and checklist_id = ? and assigned_to_id = ?", checklist_id, user_id)
+	end
+
 	def get_percent_complete
 		if self.task_items.incomplete.length == 0
 			100
@@ -33,7 +37,6 @@ class Task < ActiveRecord::Base
 			pc = (self.task_items.length - self.task_items.incomplete.length) / self.task_items.length.to_f * 100
 			pc.to_i
 		end
-
 	end
 
 end

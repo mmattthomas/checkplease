@@ -6,14 +6,16 @@ table.table.table-striped
 	tr.info
 		th Task
 		th Description
-		th align="center" Complete
+		th align="center" Complete BIP
+		th align="center" Complete MMT
 		th Completion Notes
-	tbody
-		- @task_items.sorted.each do |task_item|
-			tr id="row#{task_item.id}"
-				td = task_item.checklist_item.check_name
-				td = task_item.checklist_item.check_description
-				td align="center" = best_in_place task_item, :completed, type: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")], classes: 'taskcheck', :data => {:percent_complete => task_item.get_a_num}
-				td = best_in_place task_item, :notes
+		tbody
+			- @task_items.sorted.each do |task_item|
+				tr id="row#{task_item.id}"
+					td = task_item.checklist_item.check_name
+					td = task_item.checklist_item.check_description
+					td align="center" = best_in_place task_item, :completed, as: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")], :data => {:percent_complete => task_item.get_a_num}
+					td = task_item.completed
+					td = best_in_place task_item, :notes
 br
 = link_to "OKAY!", "#", onclick: "history.back(); return false", :class => 'btn btn-default'

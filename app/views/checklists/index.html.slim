@@ -18,7 +18,7 @@
         tr
           td
             =link_to content_tag(:i,nil, :class=>"fa fa-pencil-square fa-2x") , edit_checklist_path(checklist)
-            =link_to content_tag(:i,nil, :class=>"fa fa-arrow-circle-right fa-2x") , edit_checklist_path(checklist)
+            =link_to content_tag(:i,nil, :class=>"fa fa-arrow-circle-right fa-2x") , checklist_path(checklist)
           td
             = checklist.name
           /td

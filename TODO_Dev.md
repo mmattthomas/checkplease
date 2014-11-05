@@ -1,5 +1,15 @@
 
-Development
+Development V2
+* Simplify user interface - blur the line between Task and Checklist!
+	* [ ] modify view/checklist/show.html.slim - make this a view of recent 'tasks'
+	* [ ] more UI cleanup
+* Social aspect
+	* [ ] add friendship relationships between users
+	* [ ] ability to FIND users
+* Statistics aspect
+* Ability to "tout" successes?
+
+Development V1
 * [X] Initial application built
 * [X] Added Checklist model/scaffold
 * [X] Added Devise authentication
