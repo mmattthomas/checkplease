@@ -13,12 +13,31 @@ javascript:
 				if (msg.message != undefined) {
 					if(msg.message.substr(0,3) == "100") {
 						//addAlert("Congratulations!  You finished your tasks!");
-					  $('.dial').trigger('configure', { "fgColor":"#66CC66", "inputColor":"#66CC66" });
-						$('.dial').val(msg.message).trigger('change');
+
+						//$('.dial').val(msg.message).trigger('change');
+						//$('.dial').val(msg.message).trigger('change');
+						$(".dial").each(function () {
+	            $(this).animate({ value: msg.message}, {
+							duration: 1500,
+								easing: 'swing',
+								progress: function () {
+									$(this).val(Math.round(this.value)).trigger('change');
+								}
+	            });
+	      		});
+						$('.dial').trigger('configure', { "fgColor":"#66CC66", "inputColor":"#66CC66" });
 					}
 					else {
 						$('.dial').trigger('configure', { "fgColor":"#87CEEB", "inputColor":"#87CEEB" });
-						$('.dial').val(msg.message).trigger('change');
+						$(".dial").each(function () {
+							$(this).animate({ value: msg.message}, {
+								duration: 1500,
+								easing: 'swing',
+								progress: function () {
+									$(this).val(Math.round(this.value)).trigger('change');
+								}
+							});
+						});
 					}
 				}
 			});
