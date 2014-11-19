@@ -41,7 +41,7 @@ class Task < ActiveRecord::Base
 
 	def print_dashboard
 
-			return "<div class=\"noload\"><span class=\"loadtext\">#{self.percent_complete}%</span><div class=\"progload\" style=\"width: #{self.percent_complete}%;\"></div></div>"
+			return "<div class=\"noload\"><span class=\"loadtext\">#{self.get_percent_complete}%</span><div class=\"progload\" style=\"width: #{self.get_percent_complete}%;\"></div></div>"
 
 	end
 

@@ -1,1 +1,1 @@
-Date::DATE_FORMATS.merge!(:human => "%-m/%e/%Y")
+Date::DATE_FORMATS.merge!(:human => "%-m/%-d/%Y")
