@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: 85ea66c06a960f45d48fe36add81e1d01310b1d1
+  branch: master
+  specs:
+    best_in_place (3.0.0)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 1d93c5a77049b3d21d17c847ad0531d7714fa229
   branch: bootstrap3
@@ -40,9 +49,6 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
-    best_in_place (3.0.0)
-      actionpack (>= 3.2)
-      railties (>= 3.2)
     builder (3.2.2)
     cancancan (1.9.2)
     coderay (1.1.0)
@@ -96,6 +102,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -177,7 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  best_in_place (~> 3.0.0.rc1)
+  best_in_place!
   cancancan (~> 1.8)
   coffee-rails (~> 4.0.0)
   devise
@@ -188,6 +196,7 @@ DEPENDENCIES
   mail
   pg
   pry-rails
+  quiet_assets (~> 1.0.3)
   rails (= 4.1.1)
   rails_12factor
   sass-rails (~> 4.0.3)

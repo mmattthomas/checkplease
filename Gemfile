@@ -18,14 +18,12 @@ gem 'simple_form'
 gem 'devise'
 gem 'cancancan',              '~> 1.8'
 gem 'mail'
-#gem 'ruby-debug',            '~> 0.10.4'
-gem 'best_in_place',          '~> 3.0.0.rc1'
-#gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
+gem 'best_in_place', git: 'git://github.com/bernat/best_in_place.git', branch: 'master'
 gem 'jbuilder',               '~> 2.0'
 
 group :development do
   gem 'pry-rails'
-  #gem 'quiet_assets',         '~> 1.0.3'
+  gem 'quiet_assets',         '~> 1.0.3'
 end
 
 # To manage assets and logs with Heroku:
