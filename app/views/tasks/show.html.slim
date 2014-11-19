@@ -1,19 +1,53 @@
+javascript:
+	$(function() {
+			$(".dial").knob({
+			'format' : function (v) { return v + "%" }
+			});
+	});
+
+	$(document).ready(function() {
+		$('.best_in_place').bind("ajax:success",
+			function (data, textStatus, jqXHR) {
+				$(this).closest('tr').find('td').each( function () { $(this).effect('highlight', {}, 1000); });
+				msg = JSON.parse(textStatus);
+				if (msg.message != undefined) {
+					if(msg.message.substr(0,3) == "100") {
+						//addAlert("Congratulations!  You finished your tasks!");
+					  $('.dial').trigger('configure', { "fgColor":"#66CC66", "inputColor":"#66CC66" });
+						$('.dial').val(msg.message).trigger('change');
+					}
+					else {
+						$('.dial').trigger('configure', { "fgColor":"#87CEEB", "inputColor":"#87CEEB" });
+						$('.dial').val(msg.message).trigger('change');
+					}
+				}
+			});
+		});
+
 .page-header
-	h1= "#{@checklist.name}"
-	p="#{@checklist.description}"
-	br
-table.table.table-striped
-	tr.info
-		th Task
-		th Description
-		th align="center" Complete
-		th Completion Notes
-		tbody
-			- @task_items.sorted.each do |task_item|
-				tr id="row#{task_item.id}"
-					td = task_item.checklist_item.check_name
-					td = task_item.checklist_item.check_description
-					td align="center" = best_in_place task_item, :completed, as: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")], :data => {:percent_complete => task_item.get_a_num}
-					td = best_in_place task_item, :notes
+	.container
+		.row
+			.col-sm-9
+				h1= "#{@checklist.name}"
+				p="#{@checklist.description}"
+			.col-sm-3
+				input[type="text" readOnly=true data-width="150" class="dial" value="#{@task.get_percent_complete}"]
+
+.container
+	.row
+		.col-md-12
+			table.table.table-striped
+				tr.info
+					th Task
+					th Description
+					th align="center" Complete
+					th Completion Notes
+					tbody
+						- @task_items.sorted.each do |task_item|
+							tr id="row#{task_item.id}"
+								td = task_item.checklist_item.check_name
+								td = task_item.checklist_item.check_description
+								td align="center" = best_in_place task_item, :completed, as: :checkbox, collection: [raw("<i class='fa fa-square-o fa-lg'></i>"), raw("<i class='fa fa-check-square-o fa-lg'></i>")], :data => {:percent_complete => task_item.get_a_num}
+								td = best_in_place task_item, :notes
 br
 = link_to "OKAY!", "#", onclick: "history.back(); return false", :class => 'btn btn-default'

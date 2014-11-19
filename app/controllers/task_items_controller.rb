@@ -48,9 +48,12 @@ class TaskItemsController < ApplicationController
         @task_item.task.update_attribute :percent_complete, pct_complete.to_i
         @task_item.task.update_attribute :complete, (pct_complete.to_i == 100)
         #format.html { redirect_to @task_item, notice: 'Task item was successfully updated.' }
-        if pct_complete.to_i == 100
-          @message = "Congratulations!  You finished your tasks!"
-        end
+        @message = pct_complete.to_s
+        # if pct_complete.to_i == 100
+        #   @message = "Congratulations!  You finished your tasks!"
+        # else
+        #   @message = pct_complete
+        # end
         format.json { render :show, status: :ok, location: @task_item }
         #format.json { respond_with_bip(@task_item) }
       else
