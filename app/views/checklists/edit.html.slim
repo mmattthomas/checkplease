@@ -1,31 +1,33 @@
 - model_class = Checklist
+- @page_title = @checklist.name
+- @form_title = @checklist.name
 /.page-header
-h1
-	i Edit &nbsp;
-	= "#{@checklist.name}"
-br
+/h1
+/	i Edit &nbsp;
+/	= "#{@checklist.name}"
+/br
 == render partial: 'form'
 
 br
 table.table.table-striped
 	tr.info
-		th &nbsp;
-		th = "Item"
-		th = "Description"
+		th width="40px" align="center" &nbsp;
+		th width="30%" Item
+		th Description
 		th
 	tbody
 		- @checklist_items.each do |ci|
 			tr
-				td = link_to '', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'fa fa-trash-o fa-lg'
-				td = best_in_place ci, :check_name, place_holder: '{{enter item}}', class: "form-control"
-				td = best_in_place ci, :check_description, place_holder: '<div class="light_text">{{click to add description}}</div>'
+				td align="center" = link_to '', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'fa fa-trash-o fa-lg'
+				td = best_in_place ci, :check_name, place_holder: '{{enter item}}', html_attrs: {width: "100%"}
+				td = best_in_place ci, :check_description, place_holder: '<div class="light_text">{{click to add description}}</div>',  inner_class: "bip-input-field"
 				td
 				/= link_to 'Delete', "/checklist_items/#{ci.id}", :data => { :confirm => "Are you Sure?" }, :method => :delete, :class => 'btn btn-sm btn-danger'
 		= form_for @new_checklist_item do |fi|
 			tr
 				td &nbsp;
-				td = fi.text_field :check_name, {size: "30", placeholder: 'add new checklist item', class: 'form-control'}
-				td = fi.text_field :check_description, {size: "30", placeholder: 'new item description', class: 'form-control'}
+				td = fi.text_field :check_name, {placeholder: 'add new checklist item', class: 'form-control'}
+				td = fi.text_field :check_description, {placeholder: 'new item description', class: 'form-control'}
 				td
 					= fi.hidden_field :checklist_id
 					= fi.submit 'Add Item', class: "btn btn-sm btn-primary"

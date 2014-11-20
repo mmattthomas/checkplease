@@ -36,7 +36,7 @@ class ChecklistItemsController < ApplicationController
 
     respond_to do |format|
       if @checklist_item.save
-        flash[:success] = 'Checklist item was successfully created!'
+        #flash[:success] = 'Checklist item was successfully created!'
         format.html { redirect_to controller: 'checklists', action: 'edit', id: @checklist_item.checklist_id }
         format.json { render :show, status: :created, location: @checklist_item }
       else

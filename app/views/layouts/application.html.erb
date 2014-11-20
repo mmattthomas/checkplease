@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Checkplease" %></title>
+    <% if @page_title %>
+      <title>CPLZ | <%= "#{@page_title}" %></title>
+    <% else %>
+      <title><%= content_for?(:title) ? yield(:title) : "Checkplease" %></title>
+    <% end %>
     <%= csrf_meta_tags %>
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -67,6 +71,9 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/"><i class="fa fa-check-square-o fa-lg"></i>  Checkplease</a>
+        <% if @form_title %>
+          <span class="navbar-brand"><b><%= @form_title %></b></span>
+        <% end %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav nav-pills pull-right">
           <% if user_signed_in? %>

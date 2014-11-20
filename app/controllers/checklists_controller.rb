@@ -27,6 +27,7 @@ class ChecklistsController < ApplicationController
       @current_task = @open_tasks.first
       @current_task_items = @current_task.task_items.sorted
     end
+    
     #puts ">>>>#{@current_task_items.length} task items found"
   end
 
