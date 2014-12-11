@@ -70,3 +70,6 @@ javascript:
 								td = best_in_place task_item, :notes
 br
 = link_to "OKAY!", "#", onclick: "history.back(); return false", :class => 'btn btn-default'
+- if @checklist.create_user == @current_user
+	|&nbsp;
+	= link_to "Edit", edit_checklist_path(@checklist), :class => 'btn btn-default'

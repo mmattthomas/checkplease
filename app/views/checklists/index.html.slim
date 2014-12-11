@@ -11,15 +11,18 @@
         th width="110px" &nbsp;
     tbody
       - @checklists.each do |checklist|
+        - task = checklist.get_most_recent_incomplete_task_for_user(@current_user)
         tr
           td
             =link_to content_tag(:i,nil, :class=>"fa fa-pencil-square fa-2x") , edit_checklist_path(checklist)
-            |&nbsp;
-            /=checklist.get_dashboard(@current_user_id)
-            - if checklist.get_dashboard(@current_user_id) >= 0
-              =link_to content_tag(:i,nil, :class=>"fa fa-arrow-circle-right fa-2x") , checklist_path(checklist)
-
-          td = checklist.name
+            - if !task.nil?
+              |&nbsp;
+              = link_to content_tag(:i,nil, :class=>"fa fa-arrow-circle-right fa-2x") , task_path(task)
+          td
+            - if task.nil?
+              = checklist.name
+            - else
+              = link_to "#{checklist.name}" , task_path(task)              
           td = checklist.description
           td = checklist.print_dashboard(current_user.id).html_safe
 

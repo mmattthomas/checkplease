@@ -1,12 +1,9 @@
 - model_class = Checklist
-- @page_title = @checklist.name
-- @form_title = @checklist.name
 .page-header
 p
 	= @checklist.description
 
-p
-  |Current task!
+|Current task!
 - if @open_tasks.length > 0
 		table.table.table-striped
 			tr.info
